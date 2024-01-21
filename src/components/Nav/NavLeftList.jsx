@@ -12,9 +12,9 @@ const NavLeftList = () => {
     ];
 
     const mappedCategories = categories.map((item, index)=>(
-        <li key={index} className='list-none inline-block mr-6'>
+        <li key={index} className='list-none inline-block'>
             <Link 
-                className='text-sm text-white no-underline font-bold text-opacity-80 tracking-tighter'
+                className='text-sm text-white no-underline font-bold text-opacity-80 tracking-tighter pt-1 pb-0'
                 to={item.src} >
                 {item.name}
             </Link>
@@ -22,7 +22,7 @@ const NavLeftList = () => {
     ));
 
   return (
-    <div className='flex'>
+    <div className='flex gap-4'>
         <Logo />
         {mappedCategories}
     </div>
