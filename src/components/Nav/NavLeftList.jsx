@@ -1,8 +1,11 @@
-import React from 'react';
+import { useEffect, useState} from 'react';
 import { Logo } from '../Svgs/Logo/Logo';
 import { Link } from 'react-router-dom';
+import useScroll from '../../hooks/useScroll';
 
 const NavLeftList = () => {
+
+    const isScrolled = useScroll();
 
     const categories = [
         { name: "태그검색", src:"/finder"},
@@ -14,7 +17,11 @@ const NavLeftList = () => {
     const mappedCategories = categories.map((item, index)=>(
         <li key={index} className='list-none inline-block'>
             <Link 
-                className='text-sm text-white no-underline font-bold text-opacity-80 tracking-tighter pt-1 pb-0'
+                className={`
+                    ${isScrolled ? 'text-black' : 'text-white'} 
+                    text-sm no-underline font-bold text-opacity-80 
+                    tracking-tighter pt-1 pb-0`
+                }
                 to={item.src} >
                 {item.name}
             </Link>
@@ -22,10 +29,23 @@ const NavLeftList = () => {
     ));
 
   return (
-    <div className='flex gap-4'>
-        <Logo />
-        {mappedCategories}
-    </div>
+    <>
+    {!isScrolled?(
+        <>
+            <div className={`max-lg:hidden flex gap-4 `}>
+                <Logo />
+                {mappedCategories}
+            </div>
+        </>
+    ):(
+        <>
+            <div className={`max-lg:flex-col flex gap-4`}>
+                <Logo color='black' />
+                <div className='max-lg:hidden flex space-x-4'>{mappedCategories}</div>
+            </div>
+        </>
+    )}
+    </>
   );
 }
 

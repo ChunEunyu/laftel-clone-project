@@ -5,9 +5,9 @@ import Footer from '../Footer/Footer';
 const Home = () => {
   return (
     <>
-      <div className='bg-black'>
+      <div>
         <Header />
-        <h1>Home</h1>
+        <div className='h-screen' style={{backgroundColor:'pink'}}><h1>Home</h1></div>
       </div>
       <Footer />
     </>

@@ -17,14 +17,14 @@ const FooterInfo = () => {
             <a 
                 href={item.src} 
                 target="_blank"
-                className="text-white font-medium no-underline text-sm pb-0 pt-0 mb-0 mt-0" >
+                className="text-white font-semibold no-underline text-sm pb-0 pt-0 mb-0 mt-0" >
                 {item.name}
             </a>
         </list>
     ));
 
   return (
-    <div className='flex gap-4 mt-3'>
+    <div className='max-lg:flex-col max-lg:gap-3 flex gap-4 mt-3'>
       {mappedMenuList}
     </div>
   );

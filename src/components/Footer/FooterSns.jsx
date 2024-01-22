@@ -28,7 +28,7 @@ const FooterSns = () => {
     ));
 
   return (
-    <div className='list-none text-2xl flex gap-4 pt-3'>
+    <div className='max-lg:justify-center list-none text-2xl flex gap-4 pt-3'>
       {mappedSnsList}
     </div>
   );
