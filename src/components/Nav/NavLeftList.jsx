@@ -39,9 +39,9 @@ const NavLeftList = () => {
         </>
     ):(
         <>
-            <div className={`max-lg:flex-col flex gap-4`}>
+            <div className={`max-lg:flex-col max-lg:mx-auto flex gap-4`}>
                 <Logo color='black' />
-                <div className='max-lg:hidden flex space-x-4'>{mappedCategories}</div>
+                <div className='max-lg:hidden flex space-x-6'>{mappedCategories}</div>
             </div>
         </>
     )}

@@ -12,11 +12,11 @@ const Header = () => {
         pt-3 pb-4 pl-12 pr-12 fixed w-full 
         ${
           isScrolled ? 
-            'bg-white transition duration-700 ease-in-out' 
+            'max-lg:pr-2  bg-white transition duration-700 ease-in-out' 
             : 
-            'transition duration-700 ease-in-out'
+            'max-lg:pr-2 transition duration-700 ease-in-out'
         }`}>
-        <div className='flex justify-between'>
+        <div className={`${!isScrolled ?'max-lg:flex-row-reverse':''} flex justify-between `}>
             <NavLeftList />
             <NavRightList />
         </div>

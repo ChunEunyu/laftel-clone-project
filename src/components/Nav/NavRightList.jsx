@@ -9,18 +9,17 @@ const NavRightList = () => {
   const isScrolled = useScroll();
 
   return (
-    <div className={`flex gap-5 ${isScrolled ? 'text-black' : 'text-white'}`}>
+    <div className={`max-lg:gap-2 lg:gap-5 flex ${isScrolled ? 'text-black' : 'text-white'}`}>
         <IoSearch
-          className='
-            pb-0 pt-0 mt-1 
-            pl-0 pr-0 ml-0 mr-0
+          className=' 
+            pb-0 pt-0 mt-2
             cursor-pointer 
-            w-5 h-5' />
+            w-6 h-6' />
         <Link 
             to="/login"
             className={`
               max-lg:hidden
-              pb-0 pt-0 mt-1 
+              pb-0 pt-0 mt-2
               text-sm text-opacity-80 
               no-underline font-bold 
               tracking-tighter 
@@ -32,7 +31,6 @@ const NavRightList = () => {
           className={`
             lg:hidden 
             pb-0 pt-0 mt-2
-            pl-0 pr-0 ml-0 mr-0
             w-6 h-6
             ${isScrolled ? 'text-black' : 'text-white'}
         `} />
