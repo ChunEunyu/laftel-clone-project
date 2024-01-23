@@ -9,6 +9,7 @@ const Header = () => {
 
   return (
       <div className={`
+        z-40
         pt-3 pb-4 pl-12 pr-12 fixed w-full 
         ${
           isScrolled ? 
