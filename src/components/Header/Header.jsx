@@ -17,7 +17,7 @@ const Header = () => {
             : 
             'max-lg:pr-2 transition duration-700 ease-in-out'
         }`}>
-        <div className={`${!isScrolled ?'max-lg:flex-row-reverse':''} flex justify-between `}>
+        <div className={`${!isScrolled ?'max-lg:flex-row-reverse':''} flex justify-between`}>
             <NavLeftList />
             <NavRightList />
         </div>

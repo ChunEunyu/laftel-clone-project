@@ -18,7 +18,11 @@ const NavLeftList = () => {
         <li key={index} className='list-none inline-block'>
             <Link 
                 className={`
-                    ${isScrolled ? 'text-black' : 'text-white'} 
+                    ${isScrolled ? 
+                        'text-black' 
+                        : 
+                        'text-white '
+                    } 
                     text-sm no-underline font-bold text-opacity-80 
                     tracking-tighter pt-1 pb-0`
                 }
@@ -32,9 +36,9 @@ const NavLeftList = () => {
     <>
     {!isScrolled?(
         <>
-            <div className={`max-lg:hidden flex gap-4 `}>
+            <div className={`max-lg:hidden flex gap-4`}>
                 <Logo />
-                {mappedCategories}
+                <div className='flex gap-4'>{mappedCategories}</div>
             </div>
         </>
     ):(
