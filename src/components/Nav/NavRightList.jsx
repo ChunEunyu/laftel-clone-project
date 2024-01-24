@@ -16,7 +16,7 @@ const NavRightList = () => {
             cursor-pointer 
             w-6 h-6' />
         <Link 
-            to="/login"
+            to="/auth"
             className={`
               max-lg:hidden
               pb-0 pt-0 mt-2

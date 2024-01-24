@@ -10,7 +10,6 @@ const Home = () => {
         <Header />
         <div className='h-screen'>
           <HomeSlider className='z-10' />
-          
         </div>
       </div>
       <Footer />

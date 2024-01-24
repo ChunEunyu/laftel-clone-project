@@ -1,0 +1,22 @@
+.auth-container {
+  background-image: url('../../../public/assets/auth-background.webp'); 
+  opacity: 0.97;
+  background-size: 200% auto; /* Adjust the value based on your design */
+  background-position: 100% 50%;
+  height: 100vh; /* 화면 전체 높이로 설정 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  overflow: hidden;
+  animation: moveBackground 100s linear infinite;
+}
+
+@keyframes moveBackground {
+  0% {
+    background-position: 0% 200%;
+  }
+  100% {
+    background-position: 200% 0%;
+  }
+};
