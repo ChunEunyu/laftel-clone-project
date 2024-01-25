@@ -1,6 +1,6 @@
 .joinForm-box {
-    width: 410px;
-    height: 400px;
+    width: 400px;
+    height: 450px;
     margin-top: 30px;
     border-color: #444444;
     border-width: 1px;
@@ -9,4 +9,31 @@
     padding: 30px 40px 30px 40px;
     justify-content: flex-start;
     align-items:flex-start;
+}
+
+.input-box {
+    color: #816bff;
+    background-color: black;
+    width: 100%;
+    outline: none;
+    box-shadow: 0 2px 2px -1px #816bff;
+    font-size: small;
+    padding-bottom: 5px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.submit-button {
+    width: 100%;
+    font-weight: 800;
+    background-color: #444444;
+    padding: 10px 10px 10px 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.submit-button:focus {
+    background-color: #816bff;
 }

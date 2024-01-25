@@ -2,7 +2,7 @@ export function Logo({ color = "white", width= "72", height="24"}) {
     return(
         <div className="">
             <svg
-                className="mt-1"
+                className="mt-1 cursor-pointer"
                 xmlns='http://www.w3.org/2000/svg'
                 fill={color}
                 width={width}
