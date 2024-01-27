@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import './AuthForm.css'
 import { Logo } from '../Svgs/Logo/Logo';
 import Button from 'react-bootstrap/Button';
-import Kakao from '../Svgs/SnsLogo/Kakao';
 import Google from '../Svgs/SnsLogo/Google';
 import { MdEmail } from "react-icons/md";
+import Twitter from '../Svgs/SnsLogo/Twitter';
 
 const AuthForm = () => {
   return (
@@ -31,8 +31,8 @@ const AuthForm = () => {
       </div><br />
       <div className='text-sm'>또는</div><br/>
       <div className='flex gap-3'>
-        <Kakao />
         <Google />
+        <Twitter />
       </div>
     </div>
   );

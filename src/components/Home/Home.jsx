@@ -4,6 +4,7 @@ import Footer from '../Footer/Footer';
 import HomeSlider from './HomeSlider';
 
 const Home = () => {
+
   return (
     <>
       <div>
