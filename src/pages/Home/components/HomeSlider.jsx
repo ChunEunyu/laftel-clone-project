@@ -11,6 +11,8 @@ import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { GrNext } from "react-icons/gr";
 import Button from 'react-bootstrap/Button';
 
+import './HomeSlider.css'
+
 const HomeSlider = () => {
 
     const animationList = [
@@ -60,7 +62,7 @@ const HomeSlider = () => {
     ];
 
   return (
-    <>
+    <div className='slider-layout'>
         <Swiper
             spaceBetween={30}
             centeredSlides={true}
@@ -99,7 +101,7 @@ const HomeSlider = () => {
                 </SwiperSlide>
             ))}
         </Swiper>
-    </>
+    </div>
   );
 }
 

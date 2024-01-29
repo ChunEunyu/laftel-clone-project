@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './AuthForm.css'
-import { Logo } from '../Svgs/Logo/Logo';
+import { Logo } from '../../../assets/Svgs/Logo/Logo';
 import Button from 'react-bootstrap/Button';
-import Google from '../Svgs/SnsLogo/Google';
+import Google from '../../../assets/Svgs/Sns/Google';
 import { MdEmail } from "react-icons/md";
-import Twitter from '../Svgs/SnsLogo/Twitter';
+import Twitter from '../../../assets/Svgs/Sns/Twitter';
 
 const AuthForm = () => {
   return (

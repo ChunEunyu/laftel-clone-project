@@ -1,5 +1,5 @@
 import { useEffect, useState} from 'react';
-import { Logo } from '../Svgs/Logo/Logo';
+import { Logo } from '../../assets/Svgs/Logo/Logo';
 import { Link } from 'react-router-dom';
 import useScroll from '../../hooks/useScroll';
 

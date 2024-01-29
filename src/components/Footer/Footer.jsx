@@ -1,6 +1,6 @@
 import React from 'react';
 import FooterSns from './FooterSns';
-import { Logo } from '../Svgs/Logo/Logo';
+import { Logo } from '../../assets/Svgs/Logo/Logo';
 import FooterInfo from './FooterInfo';
 import FooterMoreBizInfo from './FooterMoreBizInfo';
 
