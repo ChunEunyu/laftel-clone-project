@@ -7,6 +7,7 @@ import Themes from '../../pages/Themes/Themes';
 import Membership from '../../pages/Membership/Membership';
 import Auth from '../../pages/Auth/Auth';
 import Join from '../../pages/Join/Join';
+import NotFound from '../../pages/NotFound/NotFound';
 
 const Routers = () => {
   return (
@@ -19,6 +20,7 @@ const Routers = () => {
         <Route path="/finder" element={<Finder />} />
         <Route path="/themes" element={<Themes />} />
         <Route path="/membership" element={<Membership />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );
