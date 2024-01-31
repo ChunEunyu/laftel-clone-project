@@ -19,6 +19,7 @@ const AnimeSlider = () => {
   useEffect(() => {
     postAnimeList();
   }, [])
+
   return (
     <div className='w-full'>
         {animeData.map((animeCategory) => (
@@ -32,28 +33,21 @@ const AnimeSlider = () => {
               draggable={false}
               responsive={responsive}
               ssr={true}
-              infinite={true}
-              
+              infinite={true}   
             >
               {animeCategory.item_list.map((animeItem) => (
                 <>
                   <div 
-                    className='
-                      truncate m-2 cursor-pointer
-                      2xl:w-[290px] 2xl:h-[220px] 
-                      xl:w-[230px] xl:h-[130px] 
-                      md:w-[210px] md:h-[120px] 
-                      sm:w-[215px] sm:h-[160px] 
-                    '
-                  >
+                    className='truncate m-2 cursor-pointer auto-rows-min gap-1 
+                      2xl:h-48 xl:h-44 lg:h-40 md:h-36 sm:h-32'>
                     <img 
-                      className='object-cover rounded-sm w-full h-4/5'
+                      className='object-cover rounded-sm w-full h-3/4'
                       src={animeItem.images[1]?.img_url ?? animeItem.images[0]?.img_url} 
                       alt='img' 
                     />
-                    <span className='xl:text-sm max-xl:text-xs'>
+                    <div className='text-sm max-md:text-xs whitespace-normal'>
                       {animeItem.name}
-                    </span>
+                    </div>
                   </div>
                 </> 
             ))}
