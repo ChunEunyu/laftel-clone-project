@@ -2,8 +2,9 @@ import React from 'react';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import HomeSlider from './components/HomeBanner/HomeSlider';
-import AnimeSlider from './components/AnimeSlider/AnimeSlider';
+import RecommendAnimeSlider from './components/AnimeSlider/RecommendAnimeSlider';
 import './Home.style.css'
+import DailyAnimeSlider from './components/AnimeSlider/DailyAnimeSlider';
 
 const Home = () => {
 
@@ -11,9 +12,10 @@ const Home = () => {
     <>
       <div>
         <Header/>
-        <HomeSlider className='z-10' />
+        <HomeSlider/>
         <div className='home-layout'>
-          <AnimeSlider />
+          <DailyAnimeSlider />
+          <RecommendAnimeSlider />
         </div>
       </div>
       <Footer />
