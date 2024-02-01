@@ -4,7 +4,15 @@ import { fetchDailyAnime } from '../utils/api';
 
 const DailyAnimeList = () => {
 
-  const { animeData, setAnimeData } = useDailyStore();
+  const { 
+    animeData, 
+    categorizedData, 
+    selectedDay, 
+    selectedDayData,
+    setAnimeData, 
+    setCategorizedData,
+    setSelectedDayData
+  } = useDailyStore();
 
   // 요일 별 신작 애니메이션 데이터 불러오기 
   const getDailyAnimeList = async () => {
@@ -14,36 +22,79 @@ const DailyAnimeList = () => {
   
   // 데이터를 요일 별로 분류하기
   const categorizeAnimeByDay = () => {
-    const categorizedData = Array.from({ length: 7 }, () => []);
+    const newData = Array.from({ length: 7 }, () => []);
      
     animeData.forEach((anime) => {
         const day = anime.distributed_air_time;
         
         if (day === "월요일") {
-            categorizedData[0].push(anime)
+          newData[0].push(anime)
+
         } else if (day === "화요일") {
-            categorizedData[1].push(anime)
+          newData[1].push(anime)
+
         } else if (day === "수요일") {
-            categorizedData[2].push(anime)
+          newData[2].push(anime)
+
         } else if (day === "목요일") {
-            categorizedData[3].push(anime)
+          newData[3].push(anime)
+
         } else if (day === "금요일") {
-            categorizedData[4].push(anime)
+          newData[4].push(anime)
+
         } else if (day === "토요일") {
-            categorizedData[5].push(anime)
+          newData[5].push(anime)
+
         } else if (day === "일요일") {
-            categorizedData[6].push(anime)
+          newData[6].push(anime)
+
         } 
+    });
 
-    })
+    setCategorizedData(newData);
 
-    console.log(categorizedData);
-  }
+  };
+
+  // 누른 요일 버튼에 대한 해당 요일의 애니메이션 리스트 데이터 보내기 
+  const sendSelectedDayData = () => {
+
+    if (selectedDay === 0) {
+      setSelectedDayData(categorizedData[0]);
+      
+    } else if (selectedDay === 1) {
+      setSelectedDayData(categorizedData[1]);
+      
+    } else if (selectedDay === 2) {
+      setSelectedDayData(categorizedData[2]);
+      
+    } else if (selectedDay === 3) {
+      setSelectedDayData(categorizedData[3]);
+      
+    } else if (selectedDay === 4) {
+      setSelectedDayData(categorizedData[4]);
+      
+    } else if (selectedDay === 5) {
+      setSelectedDayData(categorizedData[5]);
+      
+    } else if (selectedDay === 6) {
+      setSelectedDayData(categorizedData[6]);
+      
+    } 
+  };
 
   useEffect(() => {
     getDailyAnimeList();
-    categorizeAnimeByDay();
   }, [])
+
+  useEffect(() => {
+    categorizeAnimeByDay();
+  }, [selectedDay])
+
+  useEffect(() => {
+    sendSelectedDayData();
+    console.log("selectedDay", selectedDay);
+    console.log("selectedDayData", selectedDayData);
+  }, [selectedDay, selectedDayData])
 
 }
 

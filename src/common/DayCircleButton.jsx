@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
+import useDailyStore from '../stores/useDailyStore';
 
 const DayCircleButton = () => {
 
     const days = ['월', '화', '수', '목', '금', '토', '일'];
-
-    const [selectedDay, setSelectedDay] = useState(null);
+    const { selectedDay, setSelectedDay } = useDailyStore();
 
     const clickButton = (index) => {
       if (selectedDay === index) {

@@ -1,9 +1,15 @@
-import React, { useEffect } from 'react';
 import DayCircleButton from '../../../../common/DayCircleButton';
-import Carousel from "react-multi-carousel";
 import DailyAnimeList from '../../../../common/DailyAnimeList';
+import AnimeCard from '../../../../common/AnimeCard';
+
+import Carousel from "react-multi-carousel";
+import { responsive } from '../../../../constraints/responsive';
+
+import useDailyStore from '../../../../stores/useDailyStore'; 
 
 const DailyAnimeSlider = () => {
+
+  const { selectedDayData } = useDailyStore();
 
   return (
     <div className='w-full'>
@@ -12,6 +18,24 @@ const DailyAnimeSlider = () => {
       </div>
       <DayCircleButton />
       <DailyAnimeList />
+      <Carousel
+        className='relative z-0'
+        swipeable={true}
+        draggable={false}
+        responsive={responsive}
+        ssr={true}
+        infinite={true}   
+        arrows={true}
+      >
+        {selectedDayData.map((anime) => (
+          <AnimeCard
+            key={anime.id}
+            imgUrl={anime.images[1]?.img_url ?? anime.images[0]?.img_url}
+            title={anime.name}
+          />
+        ))}
+      </Carousel>
+
     </div>
   );
 }
