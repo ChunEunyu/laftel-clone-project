@@ -1,9 +1,10 @@
 import { create } from 'zustand';
+import { getCurrentDayOfWeek } from '../utils/getCurrentDayOfWeek';
 
 const useDailyStore = create((set) => ({
     animeData: [],
     categorizedData: Array.from({ length: 7 }, () => []),
-    selectedDay: null,
+    selectedDay: getCurrentDayOfWeek(),
     selectedDayData: [],
     setAnimeData: (data) => set({ animeData: data}),
     setCategorizedData: (data) => set({ categorizedData: data }),
