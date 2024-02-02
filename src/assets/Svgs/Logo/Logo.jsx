@@ -1,8 +1,9 @@
-export function Logo({ color = "white", width= "72", height="24"}) {
+export function Logo({ color='white', width= "72", height="24"}) {
+
     return(
-        <div className="">
+        <div>
             <svg
-                className="mt-1 cursor-pointer"
+                className="cursor-pointer"
                 xmlns='http://www.w3.org/2000/svg'
                 fill={color}
                 width={width}

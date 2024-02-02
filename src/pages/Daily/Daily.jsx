@@ -1,9 +1,13 @@
-import React from 'react';
+
+import Header from '../../components/Header/Header';
+import DailyAnimeSlider from '../Home/components/AnimeSlider/DailyAnimeSlider';
+
 
 const Daily = () => {
   return (
-    <div>
-      <h1>Daily</h1>
+    <div className='bg-black h-screen'>
+      <Header />
+      <DailyAnimeSlider />
     </div>
   );
 }

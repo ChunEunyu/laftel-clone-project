@@ -14,9 +14,11 @@ const DailyAnimeList = () => {
 
   const fetchData = useCallback(async () => {
     try {
+      // 신작 애니메이션 데이터 가져오기
       const data = await fetchDailyAnime();
       setAnimeData(data);
 
+      // 신작 애니메이션을 요일 별로 분류하기
       const newData = Array.from({ length: 7 }, () => []);
       data.forEach((anime) => {
         const day = anime.distributed_air_time;
@@ -47,15 +49,15 @@ const DailyAnimeList = () => {
         }
       });
 
-      setCategorizedData(newData);
-      setSelectedDayData(newData[selectedDay]);
+      setCategorizedData(newData); // 분류한 애니메이션 리스트를 categorizedData에 저장
+      setSelectedDayData(newData[selectedDay]); // 현재 요일에 대한 애니메이션 리스트를 selectedDayData에 저장
     } catch (error) {
       console.error('Error fetching data:', error);
     }
   }, [selectedDay, setAnimeData, setCategorizedData, setSelectedDayData]);
 
   useEffect(() => {
-    fetchData();
+    fetchData(); 
   }, [fetchData]);
   };
 
