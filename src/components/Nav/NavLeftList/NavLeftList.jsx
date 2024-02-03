@@ -1,7 +1,7 @@
 import { Logo } from '../../../assets/Svgs/Logo/Logo';
 import { Link } from 'react-router-dom';
 import useScroll from '../../../hooks/useScroll';
-import { leftMenuListStyle, leftMenuStyle, navLeftListStyle } from './NavLeftListStyle';
+import { leftMenuListStyle, leftMenuStyle, navLeftListStyle} from './NavLeftListStyle';
 
 const NavLeftList = () => {
     const isScrolled = useScroll();
@@ -14,9 +14,9 @@ const NavLeftList = () => {
     ];
 
     const mappedCategories = categories.map((item, index)=>(
-        <li key={index} className={isScrolled? leftMenuListStyle.scrolled : leftMenuListStyle.base}>
-            <Link 
-                className={isScrolled? leftMenuStyle.scrolled : leftMenuStyle.base}
+        <li key={index} className={isScrolled? leftMenuListStyle.scrolled : leftMenuListStyle.base }>
+            <Link    
+                className={isScrolled ? leftMenuStyle.scrolled : leftMenuStyle.base}
                 to={item.src} >
                 {item.name}
             </Link>

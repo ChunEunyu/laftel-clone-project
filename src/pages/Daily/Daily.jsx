@@ -5,9 +5,11 @@ import DailyAnimeSlider from '../Home/components/AnimeSlider/DailyAnimeSlider';
 
 const Daily = () => {
   return (
-    <div className='bg-black h-screen'>
+    <div>
       <Header />
-      <DailyAnimeSlider />
+      <div className='bg-black h-screen'>
+        <DailyAnimeSlider />
+      </div>
     </div>
   );
 }
