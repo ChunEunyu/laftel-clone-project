@@ -4,7 +4,7 @@ import HomeSlider from './components/HomeBanner/HomeSlider';
 import RecommendAnimeSlider from './components/AnimeSlider/RecommendAnimeSlider';
 import './Home.style.css'
 import DailyAnimeSlider from './components/AnimeSlider/DailyAnimeSlider';
-import Header from '../../components/Header/Header'
+import Header from '../../components/Header/HomeHeader/Header'
 
 const Home = () => {
 

@@ -1,4 +1,3 @@
-import { useState} from 'react';
 import { Link } from 'react-router-dom';
 import { IoSearch } from "react-icons/io5";
 import { RxHamburgerMenu } from "react-icons/rx";

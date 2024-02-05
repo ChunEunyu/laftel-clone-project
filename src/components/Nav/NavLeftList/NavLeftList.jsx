@@ -25,7 +25,9 @@ const NavLeftList = () => {
 
   return (
     <div className={isScrolled? navLeftListStyle.scrolled : navLeftListStyle.base}>
+        <Link to="/">
         <Logo color={isScrolled? 'black' : 'white'} width='84' height='30' />
+        </Link>
         {mappedCategories}
     </div>
   );

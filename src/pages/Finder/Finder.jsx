@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { doc, getDoc  } from "firebase/firestore";
 import { firestore } from '../../firebase';
+import Header from '../../components/Header/PageHeader/Header';
 
 const Finder = () => {
   const [test, setTest] = useState()
@@ -25,10 +26,13 @@ const Finder = () => {
   
   return (
     <div>
-      <h1>finder</h1>
-      {test !== undefined &&
-        <div>{test.name}</div>}
-      
+      <Header />
+      <div>
+        <h1>finder</h1>
+        {test !== undefined &&
+          <div>{test.name}</div>}
+        
+      </div>
     </div>
   );
 }

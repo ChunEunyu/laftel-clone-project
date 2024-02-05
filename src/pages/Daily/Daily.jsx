@@ -1,5 +1,4 @@
-
-import Header from '../../components/Header/Header';
+import Header from '../../components/Header/PageHeader/Header';
 import DailyAnimeSlider from '../Home/components/AnimeSlider/DailyAnimeSlider';
 
 

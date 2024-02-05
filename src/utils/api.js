@@ -4,7 +4,7 @@ const api = axios.create({
     baseURL: 'https://laftel.net/api/',
 });
 
-// 추천 테마에 대한 애니메이션 리스트
+// 홈 페이지에서의 추천 애니메이션 리스트
 export const fetchRecommendAnime = async (number) => {
     try {
         const response = await api.post(`home/v2/recommend/${number}/`);
@@ -25,4 +25,15 @@ export const fetchDailyAnime = async () => {
       console.error('Error fetching daily anime list:', error);
       throw error;
     }
-  };
+};
+
+// 테마 추천 페이지에서 테마 별 애니메이션 리스트 불러오기
+export const fetchThemes = async () => {
+  try {
+    const response = await api.get('recommends/v1/themes/?limit=20&offset=10');
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching daily anime list:', error);
+    throw error;
+  }
+}
