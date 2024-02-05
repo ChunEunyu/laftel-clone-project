@@ -16,7 +16,7 @@ const DailyAnimeSlider = () => {
       <div className='lg:text-2xl max-lg:text-lg font-semibold mb-2'>
         요일별 신작
       </div>
-      <DayCircleButton />
+      <DayCircleButton isHomePage={true} />
       <DailyAnimeList />
       <Carousel
         className='relative z-0'

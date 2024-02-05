@@ -23,7 +23,7 @@ const Themes = () => {
       <Header />
       <div className='pt-20 pb-20 lg:size-7/12 mx-auto'>
         <Container fluid >
-          <h2 className='font-bold '>테마추천</h2>
+          <h3 className='font-bold '>테마추천</h3>
           <Row>
             {themesData.map((item, index) => (
               <Col key={index} xs={4} sm={4} md={4} lg={4}>
