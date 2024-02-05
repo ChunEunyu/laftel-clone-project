@@ -1,16 +1,37 @@
 import { useEffect } from 'react';
 import Header from '../../components/Header/PageHeader/Header';
-import useRecommendStore from '../../stores/useRecommendStore';
 import { fetchThemes } from '../../utils/api';
+import useThemesStore from '../../stores/useThemesStore'
+import ThemesCard from '../../common/ThemesCard';
+import { Container, Row, Col } from 'react-bootstrap';
 
 const Themes = () => {
-  
-  
+  const { themesData, setThemesData } = useThemesStore();
+
+  const postThemesList = async () => {
+    const data = await fetchThemes();
+    setThemesData(data.results);
+  }
+
+  useEffect(() => {
+    postThemesList();
+    console.log('mounted themesData:', themesData);
+  }, [])
+ 
   return (
     <div>
       <Header />
-      <div className='pt-20 pl-4 pr-4'>
-        <h2 className='font-bold'>테마추천</h2>
+      <div className='pt-20 pb-20 lg:size-7/12 mx-auto'>
+        <Container fluid >
+          <h2 className='font-bold '>테마추천</h2>
+          <Row>
+            {themesData.map((item, index) => (
+              <Col key={index} xs={4} sm={4} md={4} lg={4}>
+                <ThemesCard imgUrl={item.theme_item_list[0].item.img_url} title={item.title} desc={item.content} />
+              </Col>
+            ))}
+          </Row>
+        </Container>
       </div>
     </div>
   );
