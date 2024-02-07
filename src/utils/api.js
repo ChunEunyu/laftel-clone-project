@@ -35,4 +35,28 @@ export const fetchThemes = async () => {
     console.error('Error fetching daily anime list:', error);
     throw error;
   }
+}; 
+
+// 태그 검색 페이지에서의 애니메이션 리스트 불러오기
+export const fetchFinder = async () => {
+  const startNumber = 41790;
+  const endNumber = 41850;
+  try {
+    let items = [];
+    let promises = [];
+    for (let number = startNumber; number <= endNumber; number ++) {
+      promises.push(
+        api.get(`v1.0/items/${number}/detail/`).then(response => {
+          items.push(response.data);
+        }).catch(error => {
+          console.error(`Item ${number} not found, skipping...`);
+        })
+      );
+    }
+    await Promise.all(promises);
+    return items;
+  } catch (error) {
+    console.error('Error fetching items:', error);
+    throw error;
+  }
 };

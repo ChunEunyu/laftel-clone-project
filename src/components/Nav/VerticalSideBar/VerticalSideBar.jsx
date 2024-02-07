@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+
 import { IoCloseOutline } from "react-icons/io5";
 import { FaRegCheckSquare } from "react-icons/fa";
 import { MdOutlineCalendarToday } from "react-icons/md";
@@ -12,11 +14,25 @@ import { Character } from '../../../assets/Svgs/Character/Character';
 import { Link } from "react-router-dom";
 
 const VerticalSideBar = () => {
+  const [prevOverflow, setPrevOverflow] = useState('auto');
   const { isSideBarVisible, setIsSideBarVisible } = useSideBarStore();
 
   const toggleSideBarVisibility = () => {
     setIsSideBarVisible(!isSideBarVisible);
   }
+
+  useEffect(() => {
+    if (isSideBarVisible) {
+      setPrevOverflow(document.body.style.overflow);
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = prevOverflow;
+    }
+
+    return () => {
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [isSideBarVisible, prevOverflow]);
 
   return (
     <>
