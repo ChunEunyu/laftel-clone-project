@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { leftMenuListStyle, leftMenuStyle, navLeftListStyle} from '../../Nav/NavLeftList/NavLeftListStyle'
 import { IoSearch } from "react-icons/io5";
 import { RxHamburgerMenu } from "react-icons/rx";
-import { headerStyle } from '../HomeHeader/HeaderStyle';
+import { headerStyle } from '../HeaderStyle';
 import { navRightListStyle, searchIconStyle, authLinkStyle, hamburgerIconStyle } from '../../Nav/NavRightList/NavRightListStyle';
 import VerticalSideBar from '../../Nav/VerticalSideBar/VerticalSideBar';
 import useSideBarStore from '../../../stores/useSideBarStore';

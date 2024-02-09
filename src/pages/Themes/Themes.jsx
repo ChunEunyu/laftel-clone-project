@@ -15,7 +15,6 @@ const Themes = () => {
 
   useEffect(() => {
     postThemesList();
-    console.log('mounted themesData:', themesData);
   }, [])
  
   return (
@@ -27,7 +26,11 @@ const Themes = () => {
           <Row>
             {themesData.map((item, index) => (
               <Col key={index} xs={4} sm={4} md={4} lg={4}>
-                <ThemesCard imgUrl={item.theme_item_list[0].item.img_url} title={item.title} desc={item.content} />
+                <ThemesCard 
+                  imgUrl={item.theme_item_list[0].item.img_url} 
+                  title={item.title} 
+                  desc={item.content} 
+                />
               </Col>
             ))}
           </Row>

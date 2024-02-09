@@ -16,8 +16,15 @@ const DayCircleButton = ({ isHomePage }) => {
         <button 
           key={index}
           className={`
-            ${selectedDay === index ? 'bg-[#816bff] text-white' : 'bg-[#d0d0d0] text-white'}
-            ${isHomePage ? 'rounded-full lg:size-16 lg:text-2xl max-lg:size-11 max-lg:text-lg font-semibold' : 'rounded-full size-16 text-[22px] font-semibold'}
+            ${selectedDay === index ? 
+              'bg-[#816bff] text-white' 
+              : 
+              'bg-[#d0d0d0] text-white'
+            }
+            ${isHomePage ? 
+              'rounded-full lg:size-16 lg:text-2xl max-lg:size-11 max-lg:text-lg font-semibold' 
+              : 
+              'rounded-full size-16 text-[22px] font-semibold'}
           `}
           onClick={() => clickButton(index)}
         >

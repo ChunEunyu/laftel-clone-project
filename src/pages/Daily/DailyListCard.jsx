@@ -18,7 +18,9 @@ const DailyListCard = () => {
       <Row>
         {day.map((item, index) => (
           <Col key={index}>
-            <Row className={index === today ? 'bg-[#F0EDFF] rounded-xl h-full d-flex flex-column' : ''}>
+            <Row className={
+              index === today ? 'bg-[#F0EDFF] rounded-xl h-full d-flex flex-column' : ''}
+            >
               <div className={`
                 ${index === today ? 'text-[#816BFF]' : ''}
                 pt-3 pb-3 text-center text-lg font-semibold`}
@@ -30,6 +32,7 @@ const DailyListCard = () => {
                   key={anime.id}
                   imgUrl={anime.images[1]?.img_url ?? anime.images[0]?.img_url}
                   title={anime.name}
+                  all={anime}
                 />
               ))}
             </Row>

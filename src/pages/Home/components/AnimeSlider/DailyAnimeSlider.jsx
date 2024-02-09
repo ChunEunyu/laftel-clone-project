@@ -19,7 +19,7 @@ const DailyAnimeSlider = () => {
       <DayCircleButton isHomePage={true} />
       <DailyAnimeList />
       <Carousel
-        className='relative z-0'
+        className='relative z-0 mb-2'
         swipeable={true}
         draggable={false}
         responsive={responsive}
@@ -32,6 +32,7 @@ const DailyAnimeSlider = () => {
             key={anime.id}
             imgUrl={anime.images[1]?.img_url ?? anime.images[0]?.img_url}
             title={anime.name}
+            all={anime}
           />
         ))}
       </Carousel>

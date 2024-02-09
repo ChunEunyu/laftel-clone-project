@@ -1,9 +1,8 @@
 import { create } from 'zustand';
 
 const useAnimeCardStore = create((set) => ({
-  imgUrl: '',
-  title: '',
-  setAnimeCardData: (imgUrl, title) => set({ imgUrl, title }),
+  allInfo: [],
+  setAllInfo: (data) => set({ allInfo: data }),
 }));
 
 export default useAnimeCardStore;

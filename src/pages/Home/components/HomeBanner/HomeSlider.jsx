@@ -11,8 +11,6 @@ import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { GrNext } from "react-icons/gr";
 import Button from 'react-bootstrap/Button';
 
-import './HomeSlider.css'
-
 const HomeSlider = () => {
 
     const animationList = [

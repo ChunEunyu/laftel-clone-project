@@ -46,6 +46,7 @@ const RecommendAnimeSlider = () => {
                   key={animeItem.id}
                   imgUrl={animeItem.images[1]?.img_url ?? animeItem.images[0]?.img_url}
                   title={animeItem.name}
+                  all={animeItem}
                 />
             ))}
             </Carousel>

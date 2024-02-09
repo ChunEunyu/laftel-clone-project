@@ -23,9 +23,10 @@ const ContentAria = () => {
         {animeData.map((anime, index)=>(
           <Col>
             <AnimeCard 
-              key={anime.idex}
+              key={anime.id}
               imgUrl={anime.img}
               title={anime.name}
+              all={anime}
             />
           </Col>
         ))}

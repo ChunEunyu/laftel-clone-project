@@ -63,8 +63,11 @@ const CheckFilterBar = () => {
         </Button>
       </div>
       {isSideBarVisible && (
-        <div ref={sidebarRef} className='z-50 absolute h-screen pl-5 top-0 bottom-0 right-0 w-[340px] bg-white pt-3 flex flex-col'>
-            <CheckFilter />
+        <div 
+          ref={sidebarRef} 
+          className='z-50 absolute h-screen pl-5 top-0 bottom-0 right-0 w-[340px] bg-white pt-3 flex flex-col'
+        >
+          <CheckFilter />
         </div>
       )}
     </div>

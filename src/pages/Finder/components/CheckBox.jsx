@@ -1,10 +1,9 @@
-export default function Checkbox({ children, disabled, checked, onChange }) {
+export default function Checkbox({ children, checked, onChange }) {
     return (
       <label>
         <input
           className="mr-2"
           type="checkbox"
-          disabled={disabled}
           checked={checked}
           onChange={({ target: { checked } }) => onChange(checked)}
         />
