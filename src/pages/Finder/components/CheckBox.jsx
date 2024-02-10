@@ -1,15 +1,17 @@
-export default function Checkbox({ children, checked, onChange }) {
-    return (
-      <label>
-        <input
-          className="mr-2"
-          type="checkbox"
-          checked={checked}
-          onChange={({ target: { checked } }) => onChange(checked)}
-        />
-        <span className="text-[#6C6C6C] font-semibold hover:text-[#816bff] text-sm">
-            {children}
-        </span>
-      </label>
-    );
+import React, { useState } from "react";
+
+function Checkbox({ children, disabled, checked, value, onChange }) {
+  return (
+    <label>
+      <input
+        type="checkbox"
+        disabled={disabled}
+        checked={checked}
+        onChange={onChange}
+      />
+      {children}
+    </label>
+  );
 }
+
+export default Checkbox;

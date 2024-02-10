@@ -18,6 +18,7 @@ export const fetchRecommendAnime = async (number) => {
 // 요일 별 신작 애니메이션
 export const fetchDailyAnime = async () => {
     try {
+      // 요일 별 애니메이션 리스트 가져오기
       const response = await api.get('search/v2/daily/');
       return response.data;
     } catch (error) {
@@ -25,6 +26,18 @@ export const fetchDailyAnime = async () => {
       throw error;
     }
 };
+
+// 상세한 애니메이션 정보를 불러오기 
+export const fetchAnimeDetail = async (animeId) => {
+  try {
+      const response = await api.get(`v1.0/items/${animeId}/detail/`);
+      return response.data;
+  } catch (error) {
+      console.error(`Error fetching detail for item ${animeId}:`, error);
+      throw error;
+  }
+};
+
 
 // 테마 추천 페이지에서 테마 별 애니메이션 리스트 불러오기
 export const fetchThemes = async () => {

@@ -30,7 +30,7 @@ const DailyAnimeSlider = () => {
         {selectedDayData.map((anime) => (
           <AnimeCard
             key={anime.id}
-            imgUrl={anime.images[1]?.img_url ?? anime.images[0]?.img_url}
+            imgUrl={anime.img}
             title={anime.name}
             all={anime}
           />

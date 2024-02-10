@@ -18,7 +18,9 @@ const ContentAria = () => {
 
   return (
     <div className='w-full'>
-      <span className='text-sm font-semibold mb-3'>총 {animeData.length}개의 작품이 검색되었어요!</span>
+      <span className='text-sm font-semibold mb-3'>
+        총 {animeData.length}개의 작품이 검색되었어요!
+      </span>
       <Row fluid lg={5} md={4} sm={3} xs={3}>
         {animeData.map((anime, index)=>(
           <Col>
