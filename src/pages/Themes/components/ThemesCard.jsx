@@ -1,8 +1,13 @@
-import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const ThemesCard = ({ imgUrl, title, desc }) => {
+const ThemesCard = ({ id, imgUrl, title, desc }) => {
+  const navigate = useNavigate();
+  const showThemes = (id) => {
+    navigate(`/themes/${id}`);
+  };
+
   return (
-    <div className='pt-2 pb-2 cursor-pointer'>
+    <div className='pt-2 pb-2 cursor-pointer' onClick={() => showThemes(id)}>
         <img
           className='object-cover rounded-sm w-full md:h-44 sm:h-36'
           src={imgUrl}

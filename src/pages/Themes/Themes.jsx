@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import Header from '../../components/Header/PageHeader/Header';
 import { fetchThemes } from '../../utils/api';
 import useThemesStore from '../../stores/useThemesStore'
-import ThemesCard from '../../common/ThemesCard';
+import ThemesCard from './components/ThemesCard';
 import { Container, Row, Col } from 'react-bootstrap';
 
 const Themes = () => {
@@ -11,7 +11,7 @@ const Themes = () => {
   const postThemesList = async () => {
     const data = await fetchThemes();
     setThemesData(data.results);
-  }
+  };
 
   useEffect(() => {
     postThemesList();
@@ -27,6 +27,7 @@ const Themes = () => {
             {themesData.map((item, index) => (
               <Col key={index} xs={4} sm={4} md={4} lg={4}>
                 <ThemesCard 
+                  id={item.id}
                   imgUrl={item.theme_item_list[0].item.img_url} 
                   title={item.title} 
                   desc={item.content} 
