@@ -22,7 +22,7 @@ const Daily = () => {
                 <Col key={index} xs={4} sm={4} md={3}>
                   <AnimeCard
                     key={anime.id}
-                    imgUrl={anime.images[1]?.img_url ?? anime.images[0]?.img_url}
+                    imgUrl={anime.img}
                     title={anime.name}
                     all={anime}
                   />
