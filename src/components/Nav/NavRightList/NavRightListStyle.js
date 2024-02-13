@@ -3,10 +3,19 @@ export const navRightListStyle = {
     scrolled: 'max-lg:gap-4 lg:gap-5 flex'
 };
 
+export const searchBarStyle = {
+    base: 'flex bg-[#fff] px-2 rounded-md transition duration-500 ease-in-out',
+}
+
 export const searchIconStyle = {
     base: 'text-[#fff] pb-0 pt-0 cursor-pointer w-7 h-7 mt-1',
-    scrolled: 'text-[#000] lg:hover:text-[#816bff] pb-0 pt-0 cursor-pointer w-7 h-7 mt-1'
+    scrolled: 'text-[#000] lg:hover:text-[#816bff] pb-0 pt-0 cursor-pointer w-7 h-7 mt-1',
+    active: 'text-[#000] pb-0 pt-0 cursor-pointer w-4 h-4 mt-2 mr-2 transition duration-500 ease-in-out'
 };
+
+export const searchInputBarStyle = {
+    base: 'text-sm font-semibold focus:outline-none'
+}
 
 export const authLinkStyle = {
     base: 'text-[#fff] max-lg:hidden pb-0 pt-0 mt-1 text-md text-opacity-80 no-underline font-bold tracking-tighter',
