@@ -1,45 +1,58 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchThemes } from '../../../utils/api';
-import Header from '../../../components/Header/PageHeader/Header'
-import AnimeCard from '../../../common/AnimeCard';
+import Header from '../../../components/Header/PageHeader/Header';
+import ThemesDetailedAnimeCard from './ThemesDetailedAnimeCard';
+import Loading from '../../../components/Loading/Loading';
 
 const ThemesDetail = () => {
   const { id } = useParams();
   const [themeDetail, setThemeDetail] = useState(null);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const fetchDetail = async () => {
       try {
-          const data = await fetchThemes();
-          const detailedData = data.results.find(item => item.id === parseInt(id));
-          setThemeDetail(detailedData);
+        const data = await fetchThemes();
+        const detailedData = data.results.find(item => item.id === parseInt(id));
+        setThemeDetail(detailedData);
+        setLoading(false); // 데이터 로딩 완료 후 loading 상태 변경
       } catch (error) {
-          console.error('Error fetching theme detail:', error);
+        console.error('Error fetching theme detail:', error);
+        setLoading(false); // 에러 발생 시에도 loading 상태 변경
       }
     };
-    
-    fetchDetail();
-    console.log(themeDetail)
-  }, [setThemeDetail]);
 
+    fetchDetail();
+  }, [id]);
+
+  // 로딩 중일 때 표시할 내용
+  if (loading) {
+    return (
+      <Loading />
+    );
+  }
+
+  // 데이터 로딩 완료 후 표시할 내용
   return (
     <div>
       <Header />
       <div className='pt-20'>
-      {themeDetail && (
-        <div>
-          <h2>{themeDetail.title}</h2>
-          <p>{themeDetail.content}</p>
-          {themeDetail.theme_item_list.map((anime)=>(
-          <AnimeCard 
-            imgUrl={anime.item.img_url}
-            title={anime.item.name}
-            all={anime}
-          />
+        {themeDetail && (
+          <div className='pb-5'>
+            <div className='w-full h-[280px] bg-[#191B2A] text-[#fff] pt-20 px-5'>
+              <h2 className='font-bold'>
+                {themeDetail.title}
+              </h2>
+              <p className=''>
+                {themeDetail.content}
+              </p>
+            </div>
+          </div>
+        )}
+        {themeDetail && themeDetail.theme_item_list.map((anime) => (
+          <ThemesDetailedAnimeCard key={anime.item.id} info={anime.item} />
         ))}
-        </div>
-      )}
-        
       </div>
     </div>
   );

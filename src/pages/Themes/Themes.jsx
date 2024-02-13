@@ -1,21 +1,29 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Header from '../../components/Header/PageHeader/Header';
 import { fetchThemes } from '../../utils/api';
 import useThemesStore from '../../stores/useThemesStore'
 import ThemesCard from './components/ThemesCard';
 import { Container, Row, Col } from 'react-bootstrap';
+import Loading from '../../components/Loading/Loading';
 
 const Themes = () => {
+  const [loading, setLoading] = useState(true);
   const { themesData, setThemesData } = useThemesStore();
 
   const postThemesList = async () => {
     const data = await fetchThemes();
     setThemesData(data.results);
+    setLoading(false);
   };
 
   useEffect(() => {
     postThemesList();
   }, [])
+
+  // 로딩 중일 때 표시할 내용
+  if (loading) {
+    return <Loading />;
+  }
  
   return (
     <div>
