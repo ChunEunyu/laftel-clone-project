@@ -8,9 +8,6 @@ import 'swiper/css/navigation';
 
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
-import { GrNext } from "react-icons/gr";
-import Button from 'react-bootstrap/Button';
-
 const HomeSlider = () => {
 
     const animationList = [
@@ -88,12 +85,6 @@ const HomeSlider = () => {
                     <div className='absolute bottom-20 left-10 max-lg:left-5 max-lg:bottom-3'>
                         <img className='static max-lg:size-1/4 size-2/4' src={item.logo} />
                         <div className='static max-lg:text-xs text-white font-semibold text-xl pt-3'>{item.desc}</div><br />
-                        <Button variant='light'>
-                            <div className='flex lg:m-2'>
-                                <span className='max-lg:text-xs text-xl font-semibold'>보러가기</span>
-                                <GrNext className='max-lg:text-[10px] text-lg mt-1' />
-                            </div>
-                        </Button>
                         <br /><br /><br />
                     </div>
                 </SwiperSlide>
