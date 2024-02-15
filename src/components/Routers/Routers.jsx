@@ -9,6 +9,7 @@ import Membership from '../../pages/Membership/Membership';
 import Auth from '../../pages/Auth/Auth';
 import Join from '../../pages/Join/Join';
 import NotFound from '../../pages/NotFound/NotFound';
+import Search from '../../pages/Search/Search';
 
 const Routers = () => {
   return (
@@ -23,6 +24,7 @@ const Routers = () => {
         <Route path="/themes/:id" element={<ThemesDetail />} />
         <Route path="/membership" element={<Membership />} />
         <Route path="*" element={<NotFound />} />
+        <Route path='/search' element={<Search />} />
       </Routes>
     </>
   );

@@ -1,15 +1,17 @@
-import React from 'react';
+import { useState } from 'react';
 import { Logo } from '../../../assets/Svgs/Logo/Logo';
-import { Link } from 'react-router-dom';
-import { leftMenuListStyle, leftMenuStyle, navLeftListStyle} from '../../Nav/NavLeftList/NavLeftListStyle'
+import { Link, useNavigate } from 'react-router-dom';
+import { leftMenuListStyle, leftMenuStyle, navLeftListStyle} from '../../Nav/NavLeftList/NavLeftListStyle';
 import { IoSearch } from "react-icons/io5";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { headerStyle } from '../HeaderStyle';
-import { navRightListStyle, searchIconStyle, authLinkStyle, hamburgerIconStyle } from '../../Nav/NavRightList/NavRightListStyle';
+import { navRightListStyle, searchIconStyle, authLinkStyle, hamburgerIconStyle, searchBarStyle, searchInputBarStyle  } from '../../Nav/NavRightList/NavRightListStyle';
 import VerticalSideBar from '../../Nav/VerticalSideBar/VerticalSideBar';
 import useSideBarStore from '../../../stores/useSideBarStore';
 
 const Header = () => {
+    const navigate = useNavigate();
+    const [isSearchBarVisible, setIsSearchBarVisible] = useState(false);
     const { isSideBarVisible, setIsSideBarVisible } = useSideBarStore();
 
     const toggleSideBarVisibility = () => {
@@ -18,6 +20,10 @@ const Header = () => {
 
     const handleHamburgerClick = () => {
         toggleSideBarVisibility();
+    }
+
+    const showSearchBar = () => {
+        setIsSearchBarVisible(!isSearchBarVisible);
     }
 
     const categories = [
@@ -37,6 +43,15 @@ const Header = () => {
         </li>
     ));
 
+    // 입력한 검색어를 읽고 url을 바꿔주기
+    const search = (event) => {
+        if (event.key === "Enter") {
+        let keyword = event.target.value;
+        console.log(keyword);
+        navigate(`/search/?q=${keyword}`);
+        }
+    }
+
   return (
     <div className={headerStyle.scrolled}>
         <div className={navLeftListStyle.scrolled}>
@@ -46,7 +61,25 @@ const Header = () => {
             {mappedCategories}
         </div>
         <div className={navRightListStyle.scrolled} >
-            <IoSearch className={searchIconStyle.scrolled} />
+            {isSearchBarVisible?
+                <div className={searchBarStyle.base}>
+                    <IoSearch 
+                        className={searchIconStyle.active} 
+                        onClick={showSearchBar}
+                    />
+                    <input
+                        className={searchInputBarStyle.base}
+                        type="text"
+                        onKeyPress={(event)=>search(event)}
+                        placeholder="제목으로 검색"
+                    />
+                </div>
+            :
+            <IoSearch 
+                className={searchIconStyle.scrolled} 
+                onClick={showSearchBar}
+            />
+            }
             <Link 
                 to="/auth"
                 className={authLinkStyle.scrolled}>

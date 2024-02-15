@@ -67,9 +67,6 @@ const DailyAnimeList = () => {
       setCategorizedData(detailedData);
       setSelectedDayData(detailedData[selectedDay]); 
 
-      console.log('요일 별 분류 데이터:', newData);
-      console.log('상세 정보:', detailedData);
-
     } catch (error) {
         console.error('Error fetching data:', error);
     }

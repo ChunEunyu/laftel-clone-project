@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { IoSearch } from "react-icons/io5";
 import { RxHamburgerMenu } from "react-icons/rx";
 import useScroll from '../../../hooks/useScroll';
@@ -11,6 +11,7 @@ const NavRightList = () => {
   const [isSearchBarVisible, setIsSearchBarVisible] = useState(false);
   const isScrolled = useScroll();
   const { isSideBarVisible, setIsSideBarVisible } = useSideBarStore();
+  const navigate = useNavigate();
 
   const toggleSideBarVisibility = () => {
     setIsSideBarVisible(!isSideBarVisible);
@@ -22,6 +23,15 @@ const NavRightList = () => {
 
   const showSearchBar = () => {
     setIsSearchBarVisible(!isSearchBarVisible);
+  }
+  
+  // 입력한 검색어를 읽고 url을 바꿔주기
+  const search = (event) => {
+    if (event.key === "Enter") {
+      let keyword = event.target.value;
+      console.log(keyword);
+      navigate(`/search/?q=${keyword}`);
+    }
   }
 
 
@@ -36,8 +46,7 @@ const NavRightList = () => {
             <input
               className={searchInputBarStyle.base}
               type="text"
-              //value={searchTerm}
-              //onChange={handleInputChange}
+              onKeyPress={(event)=>search(event)}
               placeholder="제목으로 검색"
             />
           </div>

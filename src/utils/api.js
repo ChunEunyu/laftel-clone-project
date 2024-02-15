@@ -73,3 +73,30 @@ export const fetchFinder = async () => {
     throw error;
   }
 };
+
+export const fetchSearch  = async (searchQuery) => {
+  const startNumber = 41790;
+  const endNumber = 41850;
+
+  try {
+    let items = [];
+    let promises = [];
+    for (let number = startNumber; number <= endNumber; number++) {
+      promises.push(
+        api.get(`v1.0/items/${number}/detail/`).then(response => {
+          if (response.data.name.includes(searchQuery)) {
+            items.push(response.data);
+          }
+        }).catch(error => {
+          console.error(`Item ${number} not found, skipping...`);
+        })
+      );
+    }
+    await Promise.all(promises);
+
+    return items;
+  } catch (error) {
+    console.error('Error fetching items:', error);
+    throw error;
+  }
+};

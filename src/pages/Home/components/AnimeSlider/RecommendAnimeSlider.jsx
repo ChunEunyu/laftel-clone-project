@@ -17,7 +17,6 @@ const RecommendAnimeSlider = () => {
   const postAnimeList = async () => {
     const data = await fetchRecommendAnime(10);
     setAnimeData(data);
-    console.log(data);
   }
 
   useEffect(() => {
