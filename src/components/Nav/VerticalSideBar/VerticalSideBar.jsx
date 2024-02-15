@@ -103,7 +103,7 @@ const VerticalSideBar = () => {
           <Button 
             variant="light"
             as={Link}
-            to='/auth'
+            to='/membership'
             className={sideBarMenuButton.textButton}
           >
             <div className="flex">
