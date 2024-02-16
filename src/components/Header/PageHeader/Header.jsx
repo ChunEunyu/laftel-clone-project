@@ -8,8 +8,10 @@ import { headerStyle } from '../HeaderStyle';
 import { navRightListStyle, searchIconStyle, authLinkStyle, hamburgerIconStyle, searchBarStyle, searchInputBarStyle  } from '../../Nav/NavRightList/NavRightListStyle';
 import VerticalSideBar from '../../Nav/VerticalSideBar/VerticalSideBar';
 import useSideBarStore from '../../../stores/useSideBarStore';
+import useAuthStore from '../../../stores/useAuthStore';
 
 const Header = () => {
+    const { userData, setUserData } = useAuthStore();
     const navigate = useNavigate();
     const [isSearchBarVisible, setIsSearchBarVisible] = useState(false);
     const { isSideBarVisible, setIsSideBarVisible } = useSideBarStore();
@@ -50,7 +52,11 @@ const Header = () => {
         console.log(keyword);
         navigate(`/search/?q=${keyword}`);
         }
-    }
+    };
+
+    const handleLogout = () => {
+        setUserData(null);
+    };
 
   return (
     <div className={headerStyle.scrolled}>
@@ -80,11 +86,22 @@ const Header = () => {
                 onClick={showSearchBar}
             />
             }
-            <Link 
-                to="/auth"
-                className={authLinkStyle.scrolled}>
-                로그인/가입
-            </Link>
+            {userData ? (
+                <Link 
+                    to="/"
+                    className={authLinkStyle.scrolled}
+                    onClick={handleLogout}
+                >
+                    로그아웃
+                </Link>
+            ) : (
+                <Link 
+                    to="/auth"
+                    className={authLinkStyle.scrolled}
+                >
+                    로그인/가입
+                </Link>
+            )}
             <RxHamburgerMenu 
                 className={hamburgerIconStyle.scrolled}  
                 onClick={handleHamburgerClick}

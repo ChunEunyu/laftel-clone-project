@@ -13,13 +13,21 @@ import Button from 'react-bootstrap/Button';
 import { Character } from '../../../assets/Svgs/Character/Character';
 import { Link } from "react-router-dom";
 
+import useAuthStore from "../../../stores/useAuthStore";
+
 const VerticalSideBar = () => {
   const [prevOverflow, setPrevOverflow] = useState('auto');
   const { isSideBarVisible, setIsSideBarVisible } = useSideBarStore();
+  const { userData, setUserData } = useAuthStore();
 
   const toggleSideBarVisibility = () => {
     setIsSideBarVisible(!isSideBarVisible);
   }
+
+  const handleLogout = () => {
+    setUserData(null);
+  };
+
 
   useEffect(() => {
     if (isSideBarVisible) {
@@ -49,16 +57,30 @@ const VerticalSideBar = () => {
             </div>
             <Character width="110" height="110" />
           </div>
-          <Button 
-            as={Link}
-            to='/auth'
-            className={sideBarMenuButton.auth} 
-            style={{backgroundColor:'#816bff', borderBlockColor:'#816bff'}}
-          >
+          {userData? (
+            <Button 
+              as={Link}
+              to='/'
+              className={sideBarMenuButton.auth} 
+              style={{backgroundColor:'#816bff', borderBlockColor:'#816bff'}}
+              onClick={handleLogout}
+            >
+              <span className={sideBarMenuButton.authText}>
+                로그아웃
+              </span>
+            </Button>
+          ):(
+            <Button 
+              as={Link}
+              to='/auth'
+              className={sideBarMenuButton.auth} 
+              style={{backgroundColor:'#816bff', borderBlockColor:'#816bff'}}
+            >
               <span className={sideBarMenuButton.authText}>
                 로그인·가입
               </span>
-          </Button>
+            </Button>
+          )}
           <div className={boundaryStyle.base}></div>
           <Button
             variant="light"

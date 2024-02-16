@@ -1,6 +1,6 @@
 import React from 'react';
 import './Join.css'
-import JoinForm from './components/JoinForm';
+import JoinForm from './components/JoinForm/JoinForm';
 import { Logo } from '../../assets/Svgs/Logo/Logo';
 
 const Join = () => {

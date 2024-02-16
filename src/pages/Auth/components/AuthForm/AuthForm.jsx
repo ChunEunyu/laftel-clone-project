@@ -1,13 +1,30 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import './AuthForm.css'
-import { Logo } from '../../../assets/Svgs/Logo/Logo';
+import { Logo } from '../../../../assets/Svgs/Logo/Logo';
 import Button from 'react-bootstrap/Button';
-import Google from '../../../assets/Svgs/Sns/Google';
+import Google from '../../../../assets/Svgs/Sns/Google';
 import { MdEmail } from "react-icons/md";
-import Twitter from '../../../assets/Svgs/Sns/Twitter';
+import { GoogleAuth } from '../SocialAuth/GoogleAuth';
+import useAuthStore from '../../../../stores/useAuthStore';
 
 const AuthForm = () => {
+  const { handleGoogleLogin } = GoogleAuth();
+  const { userData, setUserData } = useAuthStore();
+  const navigate = useNavigate();
+
+  useEffect(()=>{
+    if (userData !== null) {
+      navigate('/');
+    }
+
+  },[userData, navigate])
+
+  function handleLoginSuccess(data) {
+    setUserData(data.user);
+    navigate('/');
+  }
+
   return (
     <div className='form-box'>
       <Logo width='200px' height='50px' /><br/>
@@ -30,9 +47,10 @@ const AuthForm = () => {
         </Button>
       </div><br />
       <div className='text-sm'>또는</div><br/>
-      <div className='flex gap-3'>
-        <Google />
-        <Twitter />
+      <div className='flex'>
+        <button onClick={() => handleGoogleLogin(handleLoginSuccess)}>
+          <Google />
+        </button>
       </div>
     </div>
   );

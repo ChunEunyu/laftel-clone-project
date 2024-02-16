@@ -6,8 +6,10 @@ import useScroll from '../../../hooks/useScroll';
 import { navRightListStyle, searchIconStyle, searchBarStyle, searchInputBarStyle, authLinkStyle, hamburgerIconStyle } from './NavRightListStyle';
 import VerticalSideBar from '../VerticalSideBar/VerticalSideBar';
 import useSideBarStore from '../../../stores/useSideBarStore';
+import useAuthStore from '../../../stores/useAuthStore';
 
 const NavRightList = () => {
+  const { userData, setUserData } = useAuthStore();
   const [isSearchBarVisible, setIsSearchBarVisible] = useState(false);
   const isScrolled = useScroll();
   const { isSideBarVisible, setIsSideBarVisible } = useSideBarStore();
@@ -32,8 +34,11 @@ const NavRightList = () => {
       console.log(keyword);
       navigate(`/search/?q=${keyword}`);
     }
-  }
+  };
 
+  const handleLogout = () => {
+    setUserData(null);
+  };
 
   return (
     <div className={isScrolled? navRightListStyle.scrolled : navRightListStyle.base}>
@@ -56,11 +61,23 @@ const NavRightList = () => {
             onClick={showSearchBar}
           />
         }
-        <Link 
-            to="/auth"
-            className={isScrolled? authLinkStyle.scrolled : authLinkStyle.base}>
-            로그인/가입
-        </Link>
+        {userData !== null? (
+          <button
+            className={isScrolled ? authLinkStyle.scrolled : authLinkStyle.base}
+            onClick={handleLogout}
+          >
+            로그아웃
+          </button>
+          ) 
+          : 
+          (
+            <Link
+              to="/auth"
+              className={isScrolled ? authLinkStyle.scrolled : authLinkStyle.base}
+            >
+              로그인/가입
+            </Link>
+          )}
         <RxHamburgerMenu 
           className={isScrolled? hamburgerIconStyle.scrolled : hamburgerIconStyle.base}  
           onClick={handleHamburgerClick}
