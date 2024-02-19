@@ -14,6 +14,7 @@ const ContentAria = () => {
 
   useEffect(() => {
     getAnimeList();
+    console.log(animeData);
   }, [])
 
   return (

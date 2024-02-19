@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import { FaArrowRotateRight } from "react-icons/fa6";
-import CheckBox from './CheckBox';
 
 const CheckFilter = () => {
   const filterType= {
-    "": ['감상 가능한 작품만 보기', '멤버십으로 감상 가능한 작품만 보기'],
+    "": ['감상 가능한 작품만 보기'],
     "장르": ['BL','GL 백합','SF','개그','공포','드라마','로맨스','모험','무협',
       '미스터리','범죄','성인','스릴러','스포츠','시대물','아동','아이돌','악역영애',
       '액션','음식','음악','이세계','일상','재난','추리','치유','특촬','판타지','하렘'],
@@ -33,12 +32,13 @@ const CheckFilter = () => {
       {Object.entries(filterType).map(([type, items]) => (
         <div key={type}>
           <div className='font-semibold text-lg mb-2'>{type === 'filter' ? '필터' : type}</div>
-          {items.map((item) => (
-            <>
-              <CheckBox key={item}>{item}</CheckBox>
-              <br />
-            </>
-          ))}
+            {items.map((item) => (
+              <>
+                <input type="checkbox" value={item} />
+                <span>{item}</span>
+                <br />
+              </>
+            ))}
           <br />
         </div>
       ))}
