@@ -5,6 +5,7 @@ import { Row, Col } from 'react-bootstrap';
 import AnimeCard from '../../../common/AnimeCard';
 
 const ContentAria = () => {
+  //console.log(selected);
   const { animeData, setAnimeData } = useFinderStore();
 
   const getAnimeList = async () => {
@@ -14,7 +15,7 @@ const ContentAria = () => {
 
   useEffect(() => {
     getAnimeList();
-    console.log(animeData);
+    console.log('태그 검색', animeData);
   }, [])
 
   return (

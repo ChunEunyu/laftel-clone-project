@@ -21,6 +21,7 @@ const RecommendAnimeSlider = () => {
 
   useEffect(() => {
     postAnimeList();
+    console.log('animeData', animeData);
   }, [])
 
   return (
