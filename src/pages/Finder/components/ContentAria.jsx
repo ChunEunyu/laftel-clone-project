@@ -3,12 +3,13 @@ import { fetchFinder } from '../../../utils/api';
 import useFinderStore from '../../../stores/useFinderStore';
 import { Row, Col } from 'react-bootstrap';
 import AnimeCard from '../../../common/AnimeCard';
+import Loading from '../../../components/Loading/Loading'
 
 const ContentAria = () => {
   const { animeData, setAnimeData, checkedItem } = useFinderStore();
   
   // 필터링된 작품 목록을 저장합니다.
-  const [filteredAnimeData, setFilteredAnimeData] = useState([]);
+  const [filteredAnimeData, setFilteredAnimeData] = useState(null);
   
   // 애니메이션 전체 목록을 받아옵니다.
   const getAnimeList = async () => {
@@ -95,13 +96,18 @@ const ContentAria = () => {
   };
 
   useEffect(() => {
-    getAnimeList();
+    getAnimeList(); // 페이지가 처음 렌더링될 때 애니메이션 데이터를 가져옵니다.
   }, []);
 
   useEffect(() => {
-    filterAnimeData(); 
-    console.log(checkedItem)
-  }, [checkedItem]);
+    if (animeData) { // animeData가 존재하는 경우에만 필터링 작업을 수행합니다.
+      filterAnimeData(); 
+    }
+  }, [animeData, checkedItem]);
+
+  if (!filteredAnimeData) {
+    return <Loading />; // filteredAnimeData가 null인 경우 로딩 상태 표시
+  }
 
   return (
     <div className='w-full'>
