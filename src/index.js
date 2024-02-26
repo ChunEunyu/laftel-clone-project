@@ -12,7 +12,7 @@ const queryClient = new QueryClient();
 
 root.render(
   <QueryClientProvider client={queryClient}>
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <App />
       <ReactQueryDevtools initialIsOpen={false} />
     </BrowserRouter>
