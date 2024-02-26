@@ -1,8 +1,10 @@
-import { useEffect, useCallback } from 'react';
+import { useEffect, useCallback, useState } from 'react';
 import useDailyStore from '../stores/useDailyStore'
 import { fetchDailyAnime, fetchAnimeDetail } from '../utils/api';
+import Loading from '../components/Loading/Loading';
 
 const DailyAnimeList = () => {
+  const [loading, setLoading] = useState(true);
 
   const { 
     selectedDay, 
@@ -17,6 +19,7 @@ const DailyAnimeList = () => {
         // 신작 애니메이션 데이터 가져오기
         const data = await fetchDailyAnime();
         setAnimeData(data);
+        setLoading(false);
 
         // 신작 애니메이션을 요일 별로 분류하기
         const newData = Array.from({ length: 7 }, () => []);
@@ -51,31 +54,35 @@ const DailyAnimeList = () => {
 
         // 각 요일별로 상세 정보 가져오기
         const detailedData = await Promise.all(
-          newData.map(async (dayData) => {
-              return Promise.all(dayData.map(async (anime) => {
-                  try {
-                      const detailData = await fetchAnimeDetail(anime.id);
-                      return detailData;
-                  } catch (detailError) {
-                      console.error(`Error fetching detail for item ${anime.id}:`, detailError);
-                      throw detailError;
-                  }
-              }));
-          })
-      );
+            newData.map(async (dayData) => {
+                return Promise.all(dayData.map(async (anime) => {
+                    try {
+                        const detailData = await fetchAnimeDetail(anime.id);
+                        return detailData;
+                    } catch (detailError) {
+                        console.error(`Error fetching detail for item ${anime.id}:`, detailError);
+                        throw detailError;
+                    }
+                }));
+            })
+        );
 
-      setCategorizedData(detailedData);
-      setSelectedDayData(detailedData[selectedDay]); 
+        setCategorizedData(detailedData);
+        setSelectedDayData(detailedData[selectedDay]); 
 
     } catch (error) {
         console.error('Error fetching data:', error);
     }
-}, [selectedDay, setAnimeData, setCategorizedData, setSelectedDayData]);
-
+  }, [selectedDay, setAnimeData, setCategorizedData, setSelectedDayData]);
 
   useEffect(() => {
     fetchData(); 
   }, [fetchData]);
-  };
+
+  // 로딩 중일 때 표시할 내용
+  if (loading) {
+    return <Loading />;
+  }
+};
 
 export default DailyAnimeList;

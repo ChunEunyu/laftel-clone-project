@@ -2,13 +2,12 @@ import React, { useState } from 'react';
 import useDailyStore from '../stores/useDailyStore';
 
 const DayCircleButton = ({ isHomePage }) => {
+  const days = ['월', '화', '수', '목', '금', '토', '일'];
+  const { selectedDay, setSelectedDay } = useDailyStore();
 
-    const days = ['월', '화', '수', '목', '금', '토', '일'];
-    const { selectedDay, setSelectedDay } = useDailyStore();
-
-    const clickButton = (index) => {
-      setSelectedDay(index);
-    };
+  const clickButton = (index) => {
+    setSelectedDay(index);
+  };
 
   return (
     <div className='space-x-5 mb-2'>

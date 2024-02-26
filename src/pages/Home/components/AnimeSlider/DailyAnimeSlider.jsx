@@ -1,14 +1,11 @@
 import DayCircleButton from '../../../../common/DayCircleButton';
 import DailyAnimeList from '../../../../common/DailyAnimeList';
 import AnimeCard from '../../../../common/AnimeCard';
-
 import Carousel from "react-multi-carousel";
 import { responsive } from '../../../../constraints/responsive';
-
 import useDailyStore from '../../../../stores/useDailyStore'; 
 
 const DailyAnimeSlider = () => {
-
   const { selectedDayData } = useDailyStore();
 
   return (
