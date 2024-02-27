@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://react-laftel-project.netlify.app",
   "dependencies": {
+    "@hookform/resolvers": "^3.3.4",
     "@mui/icons-material": "^5.15.6",
     "@mui/material": "^5.15.6",
     "@tanstack/react-query": "^5.20.1",
@@ -30,6 +31,7 @@
     "styled-components": "^6.1.8",
     "swiper": "^11.0.5",
     "web-vitals": "^2.1.4",
+    "zod": "^3.22.4",
     "zustand": "^4.5.0"
   },
   "scripts": {
