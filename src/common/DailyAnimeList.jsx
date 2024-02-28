@@ -5,79 +5,68 @@ import Loading from '../components/Loading/Loading';
 
 const DailyAnimeList = () => {
   const [loading, setLoading] = useState(true);
+  // const [cachedDetailData, setCachedDetailData] = useState({});
 
   const { 
     selectedDay, 
+    animeData,
     setAnimeData, 
+    categorizedData,
+    selectedDayData,
     setCategorizedData,
     setSelectedDayData
   } = useDailyStore();
-
-
-  const fetchData = useCallback(async () => {
-    try {
-        // 신작 애니메이션 데이터 가져오기
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
         const data = await fetchDailyAnime();
         setAnimeData(data);
         setLoading(false);
-
-        // 신작 애니메이션을 요일 별로 분류하기
-        const newData = Array.from({ length: 7 }, () => []);
-        data.forEach((anime) => {
-            const day = anime.distributed_air_time;
-            switch (day) {
-                case '월요일':
-                    newData[0].push(anime);
-                    break;
-                case '화요일':
-                    newData[1].push(anime);
-                    break;
-                case '수요일':
-                    newData[2].push(anime);
-                    break;
-                case '목요일':
-                    newData[3].push(anime);
-                    break;
-                case '금요일':
-                    newData[4].push(anime);
-                    break;
-                case '토요일':
-                    newData[5].push(anime);
-                    break;
-                case '일요일':
-                    newData[6].push(anime);
-                    break;
-                default:
-                    break;
-            }
-        });
-
-        // 각 요일별로 상세 정보 가져오기
-        const detailedData = await Promise.all(
-            newData.map(async (dayData) => {
-                return Promise.all(dayData.map(async (anime) => {
-                    try {
-                        const detailData = await fetchAnimeDetail(anime.id);
-                        return detailData;
-                    } catch (detailError) {
-                        console.error(`Error fetching detail for item ${anime.id}:`, detailError);
-                        throw detailError;
-                    }
-                }));
-            })
-        );
-
-        setCategorizedData(detailedData);
-        setSelectedDayData(detailedData[selectedDay]); 
-
-    } catch (error) {
+      } catch (error) {
         console.error('Error fetching data:', error);
-    }
-  }, [selectedDay, setAnimeData, setCategorizedData, setSelectedDayData]);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   useEffect(() => {
-    fetchData(); 
-  }, [fetchData]);
+    if (animeData.length > 0) {
+      const newData = Array.from({ length: 7 }, () => []);
+      animeData.forEach((anime) => {
+        const day = anime.animation_info.distributed_air_time;
+        switch (day) {
+          case '월요일':
+            newData[0].push(anime);
+            break;
+          case '화요일':
+            newData[1].push(anime);
+            break;
+          case '수요일':
+            newData[2].push(anime);
+            break;
+          case '목요일':
+            newData[3].push(anime);
+            break;
+          case '금요일':
+            newData[4].push(anime);
+            break;
+          case '토요일':
+            newData[5].push(anime);
+            break;
+          case '일요일':
+            newData[6].push(anime);
+            break;
+          default:
+            break;
+        }
+      });
+
+      setCategorizedData(newData);
+      setSelectedDayData(newData[selectedDay]);
+    }
+  }, [animeData, selectedDay, setCategorizedData, setSelectedDayData]);
 
   // 로딩 중일 때 표시할 내용
   if (loading) {

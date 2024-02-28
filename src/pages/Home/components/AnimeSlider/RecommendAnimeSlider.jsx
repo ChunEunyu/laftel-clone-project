@@ -19,7 +19,6 @@ const RecommendAnimeSlider = () => {
 
   useEffect(() => {
     postAnimeList();
-    console.log('animeData', animeData);
   }, [])
 
   // 로딩 중일 때 표시할 내용
