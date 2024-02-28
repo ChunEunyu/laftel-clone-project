@@ -24,6 +24,8 @@ const DailyAnimeSlider = () => {
         infinite={true}   
         arrows={true}
       >
+        
+
         {selectedDayData.map((anime) => (
           <AnimeCard
             key={anime.id}
@@ -32,6 +34,7 @@ const DailyAnimeSlider = () => {
             all={anime}
           />
         ))}
+
       </Carousel>
       
     </div>

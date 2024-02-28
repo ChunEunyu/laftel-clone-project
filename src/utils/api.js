@@ -20,9 +20,10 @@ export const fetchDailyAnime = async () => {
     try {
       // 요일 별 애니메이션 리스트 가져오기
       const response = await api.get('search/v2/daily/');
+      
       // 애니메이션의 id를 통해 디테일한 정보가 담겨 있는 애니메이션 데이터로 바꾸기
       const detailedResponseList = [];
-      const detailedAnimeList = response.data.map(async (item) => {
+      const detailedAnimeList = await Promise.all(response.data.map(async (item) => {
         try {
           const detailedResponse = await api.get(`v1.0/items/${item.id}/detail/`);
           detailedResponseList.push(detailedResponse.data)
@@ -30,8 +31,8 @@ export const fetchDailyAnime = async () => {
           console.error(`Error fetching detail for item ${item.id}:`, error);
           return null;
         }
-      })
-      
+      }));
+    
       return detailedResponseList;
     } catch (error) {
       console.error('Error fetching daily anime list:', error);
