@@ -1,4 +1,6 @@
 import axios from "axios";
+import { db } from "../firebase";
+import { doc, setDoc, getDocs, collection } from "firebase/firestore";
 
 const api = axios.create({
     baseURL: 'https://laftel.net/api/',
@@ -51,7 +53,7 @@ export const fetchThemes = async () => {
   }
 }; 
 
-// 태그 검색 페이지에서의 애니메이션 리스트 불러오기
+// 태그 검색 페이지에서의 애니메이션 리스트 불러오기 - 직접 api를 통해 애니메이션 데이터를 불러오는 방법
 export const fetchFinder = async () => {
   const startNumber = 41790;
   const endNumber = 41850;
@@ -101,3 +103,43 @@ export const fetchSearch  = async (searchQuery) => {
     throw error;
   }
 };
+
+// 파이어베이스에 애니메이션 데이터 등록하기
+export const fetchSaveToFirestore = async (searchQuery) => {
+  const startNumber = 15850; // 임의의 숫자
+  const endNumber = 15870; // 임의의 숫자
+
+  try {
+    for (let number = startNumber; number <= endNumber; number++) {
+      const response = await api.get(`v1.0/items/${number}/detail/`);
+      await setDoc(doc(db, "animations", `animation_${number}`), {
+        data: response.data
+      });
+    }
+    
+    return;
+  } catch (error) {
+    console.error('Error fetching items:', error);
+    throw error;
+  }
+};
+
+// 파이어베이스에서 모든 애니메이션 데이터를 읽어오기
+export const getAllAnimeList = async () => {
+  try {
+    // animations 컬렉션의 모든 문서 가져오기
+    const querySnapshot = await getDocs(collection(db, 'animations'));
+ 
+    // 문서 데이터 추출
+    const animations = [];
+    querySnapshot.forEach(doc => {
+      animations.push(doc.data());
+    });
+    
+    return animations;
+  } catch (error) {
+    console.error('Error getting animations:', error);
+    throw error;
+  }
+}
+

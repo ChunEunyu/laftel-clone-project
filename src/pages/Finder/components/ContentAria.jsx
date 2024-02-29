@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { fetchFinder } from '../../../utils/api';
+import { getAllAnimeList } from '../../../utils/api';
 import useFinderStore from '../../../stores/useFinderStore';
 import { Row, Col } from 'react-bootstrap';
 import AnimeCard from '../../../common/AnimeCard';
@@ -10,12 +10,12 @@ const ContentAria = () => {
   
   // 필터링된 작품 목록을 저장합니다.
   const [filteredAnimeData, setFilteredAnimeData] = useState(null);
-  
-  // 애니메이션 전체 목록을 받아옵니다.
-  const getAnimeList = async () => {
-    const data = await fetchFinder();
-    setAnimeData(data);
-  };
+
+  // 애니메이션 데이터를 파이어베이스에서 읽어오기
+  const getAllAnimations = async () => {
+    const data = await getAllAnimeList();
+    setAnimeData(data.map(item => item.data))
+  }
   
   // 선택된 태그와 일치하는 작품만 필터링합니다.
   const filterAnimeData = () => {
@@ -96,7 +96,7 @@ const ContentAria = () => {
   };
 
   useEffect(() => {
-    getAnimeList(); // 페이지가 처음 렌더링될 때 애니메이션 데이터를 가져옵니다.
+    getAllAnimations() // 페이지가 처음 렌더링될 때 애니메이션 데이터를 가져옵니다.
   }, []);
 
   useEffect(() => {
