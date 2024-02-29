@@ -77,29 +77,23 @@ export const fetchFinder = async () => {
   }
 };
 
+// 애니메이션을 검색하기 
 export const fetchSearch  = async (searchQuery) => {
-  const startNumber = 41790;
-  const endNumber = 41850;
-
   try {
-    let items = [];
-    let promises = [];
-    for (let number = startNumber; number <= endNumber; number++) {
-      promises.push(
-        api.get(`v1.0/items/${number}/detail/`).then(response => {
-          if (response.data.name.includes(searchQuery)) {
-            items.push(response.data);
-          }
-        }).catch(error => {
-          console.error(`Item ${number} not found, skipping...`);
-        })
-      );
-    }
-    await Promise.all(promises);
-
-    return items;
+    // animations 컬렉션의 모든 문서 가져오기
+    const querySnapshot = await getDocs(collection(db, 'animations'));
+ 
+    // 입력한 검색 키워드가 포함된 애니메이션을 출력하기
+    const animations = [];
+    querySnapshot.forEach(doc => {
+      if (doc.data().data.name.includes(searchQuery)) {
+        animations.push(doc.data().data);
+      }
+    });
+    
+    return animations;
   } catch (error) {
-    console.error('Error fetching items:', error);
+    console.error('Error getting animations:', error);
     throw error;
   }
 };

@@ -1,19 +1,21 @@
-import React, {useEffect} from 'react';
+import React, { useEffect, useState} from 'react';
 import Header from '../../components/Header/PageHeader/Header';
 import { useSearchParams } from 'react-router-dom';
 import { fetchSearch } from '../../utils/api';
 import useFinderStore from '../../stores/useFinderStore';
 import { Row, Col } from 'react-bootstrap';
 import AnimeCard from '../../common/AnimeCard';
+import Loading from '../../components/Loading/Loading'
 
 const Search = () => {
+  const [loading, setLoading] = useState(true);
   const [query, setQuery] = useSearchParams();
   const { animeData, setAnimeData } = useFinderStore();
 
   const getSearchAnimeList = async () => {
     const searchQuery = query.get('q');
-    console.log('searchQuery', searchQuery);
     const data = await fetchSearch(searchQuery);
+    setLoading(false);
     setAnimeData(data);
   }
 
@@ -21,7 +23,10 @@ const Search = () => {
     getSearchAnimeList();
   }, [query])
 
-  console.log('animeData', animeData)
+  if (!loading) {
+    <Loading></Loading>
+  }
+  
 
   return (
     <div>
