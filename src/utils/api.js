@@ -53,6 +53,18 @@ export const fetchThemes = async () => {
   }
 }; 
 
+// 상세한 애니메이션 정보를 가져오기
+export const fetchDetail = async (id) => {
+  try {
+    const response = await api.get(`v1.0/items/${id}/detail/`);
+    return response.data;
+
+  } catch (error) {
+    console.error('Error fetching items:', error);
+    throw error;
+  }
+}
+
 // 태그 검색 페이지에서의 애니메이션 리스트 불러오기 - 직접 api를 통해 애니메이션 데이터를 불러오는 방법
 export const fetchFinder = async () => {
   const startNumber = 41790;
