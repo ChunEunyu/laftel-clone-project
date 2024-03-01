@@ -114,7 +114,7 @@ const ContentAria = () => {
       <span className='text-sm font-semibold mb-3'>
         총 {filteredAnimeData.length}개의 작품이 검색되었어요!
       </span>
-      <Row fluid lg={5} md={4} sm={3} xs={3}>
+      <Row fluid lg={5} md={4} sm={3} xs={2}>
         {filteredAnimeData.map((anime)=>(
           <Col>
             <AnimeCard 

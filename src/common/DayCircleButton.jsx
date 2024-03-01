@@ -10,7 +10,7 @@ const DayCircleButton = ({ isHomePage }) => {
   };
 
   return (
-    <div className='space-x-5 mb-2'>
+    <div className='space-x-5 mb-2 max-sm:space-x-2'>
       {days.map((item, index) => (
         <button 
           key={index}
@@ -21,9 +21,9 @@ const DayCircleButton = ({ isHomePage }) => {
               'bg-[#d0d0d0] text-white'
             }
             ${isHomePage ? 
-              'rounded-full lg:size-16 lg:text-2xl max-lg:size-11 max-lg:text-lg font-semibold' 
+              'rounded-full lg:size-16 lg:text-2xl max-lg:size-11 max-lg:text-lg font-semibold max-sm:text-sm max-sm:size-9' 
               : 
-              'rounded-full size-16 text-[22px] font-semibold'}
+              'rounded-full size-16 text-[22px] max-sm:text-sm max-sm:size-9 font-semibold'}
           `}
           onClick={() => clickButton(index)}
         >

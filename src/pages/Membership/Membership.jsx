@@ -14,7 +14,7 @@ const Membership = () => {
             src='https://laftel.net/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimg-landing-background.7f7785ee.webp&w=3840&q=75' 
             alt='img' 
           />
-          <div className='absolute top-40 left-0 w-full text-[#fff] text-center'>
+          <div className='absolute top-40 w-full left-0 text-[#fff] text-center'>
             <h1 className='text-2xl font-bold'>
               라프텔 멤버십으로 스마트한 덕질!
             </h1>

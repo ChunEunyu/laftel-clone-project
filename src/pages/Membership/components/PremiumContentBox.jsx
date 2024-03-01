@@ -12,7 +12,7 @@ const PremiumContentBox = () => {
     ];
 
   return (
-    <div className='bg-[#ffffff] w-[550px] h-[400px] text-[#000] pt-[30px] px-5 rounded-md border-1 border-[#d3d3d3]'>
+    <div className='bg-[#ffffff] max-sm:w-full w-[550px] h-[400px] text-[#000] pt-[30px] px-5 rounded-md border-1 border-[#d3d3d3]'>
         <div className='flex-col'>
             <p className='text-2xl font-semibold'>
                 프리미엄

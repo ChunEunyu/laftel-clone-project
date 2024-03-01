@@ -12,7 +12,7 @@ const AnimeCard = ({ imgUrl, title, all }) => {
 
   return (
     <div 
-      className='truncate p-1 py-auto cursor-pointer lg:h-48 md:h-40 sm:h-36 xs:h-32'
+      className='truncate p-1 py-auto cursor-pointer lg:h-48 md:h-40 sm:h-36 xs:h-32 max-sm:h-24'
       onClick={showDetailModal}
     >
         <img

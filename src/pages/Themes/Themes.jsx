@@ -33,7 +33,7 @@ const Themes = () => {
           <h3 className='font-bold '>테마추천</h3>
           <Row>
             {themesData.map((item, index) => (
-              <Col key={index} xs={4} sm={4} md={4} lg={4}>
+              <Col key={index} xs={6} sm={4} md={4} lg={4}>
                 <ThemesCard 
                   id={item.id}
                   imgUrl={item.theme_item_list[0].item.img_url} 

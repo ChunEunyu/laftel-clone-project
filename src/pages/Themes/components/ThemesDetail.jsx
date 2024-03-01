@@ -37,10 +37,10 @@ const ThemesDetail = () => {
   return (
     <div>
       <Header />
-      <div className='pt-20'>
+      <div className='pt-20 max-sm:pt-16'>
         {themeDetail && (
           <div className='pb-5'>
-            <div className='w-full h-[280px] bg-[#191B2A] text-[#fff] pt-20 px-5'>
+            <div className='w-full h-[280px] max-sm:h-[330px] bg-[#191B2A] text-[#fff] pt-20 px-5'>
               <h2 className='font-bold'>
                 {themeDetail.title}
               </h2>

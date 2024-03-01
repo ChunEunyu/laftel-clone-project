@@ -9,7 +9,7 @@ const Finder = () => {
   return (
     <div>
       <Header />
-      <div className='pt-20 pb-10 pl-10 pr-10'>
+      <div className='pt-20 pb-10 pl-10 pr-10 max-sm:px-4'>
         <h3 className='font-bold pb-4'>태그검색</h3>
         <div className='max-lg:hidden flex flex-row gap-10'>
           <CheckFilter />

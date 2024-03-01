@@ -9,7 +9,7 @@ const ThemesCard = ({ id, imgUrl, title, desc }) => {
   return (
     <div className='pt-2 pb-2 cursor-pointer' onClick={() => showThemes(id)}>
         <img
-          className='object-cover rounded-sm w-full md:h-44 sm:h-36'
+          className='object-cover rounded-sm w-full md:h-44 sm:h-36 max-sm:h-24'
           src={imgUrl}
           alt='img'
         />
@@ -20,7 +20,7 @@ const ThemesCard = ({ id, imgUrl, title, desc }) => {
             WebkitBoxOrient: 'vertical',
             overflow: 'hidden',
           }}  
-          className='h-auto overflow-hidden overflow-ellipsis text-lg pt-2 font-bold'>
+          className='h-auto overflow-hidden overflow-ellipsis text-lg pt-2 font-bold max-sm:text-xs'>
           {title}
         </div>
         <div
@@ -30,7 +30,7 @@ const ThemesCard = ({ id, imgUrl, title, desc }) => {
             WebkitBoxOrient: 'vertical',
             overflow: 'hidden',
           }} 
-          className='h-16 overflow-hidden overflow-ellipsis text-sm text-[#616161] '
+          className='h-16 overflow-hidden overflow-ellipsis text-sm text-[#616161] max-sm:text-[11px]'
         >
           {desc}
         </div>

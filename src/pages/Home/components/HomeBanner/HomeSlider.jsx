@@ -57,7 +57,7 @@ const HomeSlider = () => {
     ];
 
   return (
-    <div className='slider-layout'>
+    <div>
         <Swiper
             spaceBetween={30}
             centeredSlides={true}
@@ -81,9 +81,9 @@ const HomeSlider = () => {
         >   
             {animationList.map((item, index)=>(
                 <SwiperSlide key={index}>
-                    <img className='relative' src={item.pc_img} alt={`Slide ${index + 1}`} />
-                    <div className='absolute bottom-20 left-10 max-lg:left-5 max-lg:bottom-3'>
-                        <img className='static max-lg:size-1/4 size-2/4' src={item.logo} />
+                    <img className='relative max-sm:h-[500px] max-sm:object-cover' src={item.pc_img} alt={`Slide ${index + 1}`} />
+                    <div className='absolute bottom-20 left-10 max-lg:left-5 max-lg:bottom-3 max-sm:bottom-1'>
+                        <img className='static max-lg:size-1/4 size-2/4 max-sm:size-1/2' src={item.logo} />
                         <div className='static max-lg:text-xs text-white font-semibold text-xl pt-3'>{item.desc}</div><br />
                         <br /><br /><br />
                     </div>
