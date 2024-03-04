@@ -5,10 +5,8 @@ import { FaStar } from "react-icons/fa";
 import useAnimeCardStore from '../stores/useAnimeCardStore';
 
 const AnimeDetailModal = () => {
-  const { allInfo, setAllInfo } = useAnimeCardStore();
+  const { allInfo, } = useAnimeCardStore();
   const [ modalOpen, setModalOpen ] = useState(true);
-
-  console.log('AnimeDetailModal allInfo', allInfo);
 
   const customModalStyles = {
     overlay: {
@@ -40,11 +38,11 @@ const AnimeDetailModal = () => {
 
   return (
     <ReactModal
-      className='lg:w-[600px] lg:h-5/6 md:[500px] md:h-5/6 sm:w-full sm:h-5/6 xs:w-full xs:h-5/6'
+      className='lg:w-[600px] lg:h-5/6 md:[500px] md:h-5/6 sm:w-full sm:h-5/6 xs:w-full xs:h-5/6 max-sm:w-full'
       isOpen={modalOpen}
       style={customModalStyles}
       ariaHideApp={false}
-      shouldCloseOnOverlayClick={false}
+      shouldCloseOnOverlayClick={true}
     >
       <div className='flex flex-col items-center'>
         <div className='flex flex-row bg-[#303041] w-16 h-8 pl-3 pt-1 mb-2 rounded-lg'>
