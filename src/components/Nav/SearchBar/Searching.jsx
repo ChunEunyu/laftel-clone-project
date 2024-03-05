@@ -2,20 +2,22 @@ import React, { useEffect } from 'react';
 import useWindowSize from '../../../hooks/useWindowSize';
 import { useNavigate } from 'react-router-dom';
 import { IoChevronBackSharp } from "react-icons/io5";
-import { navRightListStyle, searchIconStyle, searchBarStyle, searchInputBarStyle } from '../NavRightList/NavRightListStyle'
+import { searchIconStyle, searchBarStyle, searchInputBarStyle } from '../NavRightList/NavRightListStyle'
 import { IoSearch } from "react-icons/io5";
 import useSearchStore from '../../../stores/useSearchStore';
+import { IoSearchCircleOutline } from "react-icons/io5";
 
 const Searching = () => {
   const isMaxLG = useWindowSize();
   const navigate = useNavigate();
-  const { keyword, setKeyword } = useSearchStore();
+  const { setKeyword, searchHistory, addToSearchHistory } = useSearchStore();
 
   // 입력한 검색어를 읽고 url을 바꿔주기.
   const search = (event) => {
     if (event.key === "Enter") {
       const newKeyword = event.target.value;
       setKeyword(newKeyword); 
+      addToSearchHistory(newKeyword);
       navigate(`/search/?q=${newKeyword}`);
     }
   };
@@ -56,6 +58,17 @@ const Searching = () => {
       <div className='w-full h-[1px] bg-[#EFEFEF]'></div>
       <div className='p-3'>
         <p className='font-semibold text-[#816BFF]'>이전 검색어</p>
+        {searchHistory.slice(0, 5).map((item, index) => (
+          <div>
+            <span 
+              className='font-semibold text-md' 
+              key={index}
+            >
+              {item}
+            </span>
+            <br />
+          </div>
+        ))}
       </div>
     </div>
   );
