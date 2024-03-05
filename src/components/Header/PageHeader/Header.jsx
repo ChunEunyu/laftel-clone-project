@@ -9,6 +9,7 @@ import { navRightListStyle, searchIconStyle, authLinkStyle, hamburgerIconStyle, 
 import VerticalSideBar from '../../Nav/VerticalSideBar/VerticalSideBar';
 import useSideBarStore from '../../../stores/useSideBarStore';
 import useAuthStore from '../../../stores/useAuthStore';
+import SearchBar from '../../Nav/SearchBar/SearchBar'
 
 const Header = () => {
     const { userData, setUserData } = useAuthStore();
@@ -67,25 +68,7 @@ const Header = () => {
             {mappedCategories}
         </div>
         <div className={navRightListStyle.scrolled} >
-            {isSearchBarVisible?
-                <div className={searchBarStyle.base}>
-                    <IoSearch 
-                        className={searchIconStyle.active} 
-                        onClick={showSearchBar}
-                    />
-                    <input
-                        className={searchInputBarStyle.base}
-                        type="text"
-                        onKeyPress={(event)=>search(event)}
-                        placeholder="제목으로 검색"
-                    />
-                </div>
-            :
-            <IoSearch 
-                className={searchIconStyle.scrolled} 
-                onClick={showSearchBar}
-            />
-            }
+            <SearchBar isHome={false} />
             {userData ? (
                 <Link 
                     to="/"

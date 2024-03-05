@@ -10,6 +10,7 @@ import Auth from '../../pages/Auth/Auth';
 import Join from '../../pages/Join/Join';
 import NotFound from '../../pages/NotFound/NotFound';
 import Search from '../../pages/Search/Search';
+import Searching from '../Nav/SearchBar/Searching'
 
 const Routers = () => {
   return (
@@ -25,6 +26,7 @@ const Routers = () => {
         <Route path="/membership" element={<Membership />} />
         <Route path="*" element={<NotFound />} />
         <Route path='/search' element={<Search />} />
+        <Route path='/searching' element={<Searching />} />
       </Routes>
     </>
   );
