@@ -3,13 +3,13 @@ import { db } from "../firebase";
 import { doc, setDoc, getDocs, collection } from "firebase/firestore";
 
 const api = axios.create({
-    baseURL: 'https://laftel.net/api',
+    baseURL: 'https://laftel.net',
 });
 
 // 홈 페이지에서의 추천 애니메이션 리스트
 export const fetchRecommendAnime = async (number) => {
     try {
-        const response = await api.post(`/home/v2/recommend/${number}/`);
+        const response = await api.post(`/api/home/v2/recommend/${number}/`);
         return response.data
     } catch (error) {
         console.error('Error fetching anime list:', error);
@@ -21,13 +21,13 @@ export const fetchRecommendAnime = async (number) => {
 export const fetchDailyAnime = async () => {
     try {
       // 요일 별 애니메이션 리스트 가져오기
-      const response = await api.get('/search/v2/daily/');
+      const response = await api.get('/api/search/v2/daily/');
       
       // 애니메이션의 id를 통해 디테일한 정보가 담겨 있는 애니메이션 데이터로 바꾸기
       const detailedResponseList = [];
       const detailedAnimeList = await Promise.all(response.data.map(async (item) => {
         try {
-          const detailedResponse = await api.get(`/v1.0/items/${item.id}/detail/`);
+          const detailedResponse = await api.get(`/api/v1.0/items/${item.id}/detail/`);
           detailedResponseList.push(detailedResponse.data)
         } catch(error) {
           console.error(`Error fetching detail for item ${item.id}:`, error);
@@ -45,7 +45,7 @@ export const fetchDailyAnime = async () => {
 // 테마 추천 페이지에서 테마 별 애니메이션 리스트 불러오기
 export const fetchThemes = async () => {
   try {
-    const response = await api.get('/recommends/v1/themes/?limit=60&offset=20');
+    const response = await api.get('/api/recommends/v1/themes/?limit=60&offset=20');
     return response.data;
   } catch (error) {
     console.error('Error fetching daily anime list:', error);
@@ -56,7 +56,7 @@ export const fetchThemes = async () => {
 // 상세한 애니메이션 정보를 가져오기
 export const fetchDetail = async (id) => {
   try {
-    const response = await api.get(`/v1.0/items/${id}/detail/`);
+    const response = await api.get(`/api/v1.0/items/${id}/detail/`);
     return response.data;
 
   } catch (error) {
@@ -119,7 +119,7 @@ export const fetchSaveToFirestore = async (searchQuery) => {
 
   try {
     for (let number = startNumber; number <= endNumber; number++) {
-      const response = await api.get(`/v1.0/items/${number}/detail/`);
+      const response = await api.get(`/api/v1.0/items/${number}/detail/`);
       await setDoc(doc(db, "animations", `animation_${number}`), {
         data: response.data
       });
