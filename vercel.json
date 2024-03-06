@@ -3,6 +3,10 @@
     {
       "source": "/api/:path*",
       "destination": "https://laftel.net/api/:path*"
+    },
+    {
+      "source": "/api/:path*",
+      "destination": "https://laftel.net/api/:path*"
     }
   ]
 }
