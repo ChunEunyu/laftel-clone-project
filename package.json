@@ -2,7 +2,6 @@
   "name": "laftel-clone",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://react-laftel-project.netlify.app",
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
     "@mui/icons-material": "^5.15.6",
