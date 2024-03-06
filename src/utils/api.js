@@ -3,7 +3,7 @@ import { db } from "../firebase";
 import { doc, setDoc, getDocs, collection } from "firebase/firestore";
 
 const api = axios.create({
-    baseURL: 'https://laftel.net',
+  baseURL: 'https://laftel.net',
 });
 
 // 홈 페이지에서의 추천 애니메이션 리스트
