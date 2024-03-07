@@ -137,7 +137,7 @@ const Signup = () => {
           )}
         </div>
         <button className='submit-button' disabled={isSubmitting} type='submit'>
-          {isSubmitting ? '로그인...' : '로그인'}
+          {isSubmitting ? '회원가입...' : '회원가입'}
         </button>
         {errors.root && (
           <p className='font-medium text-xs'>
