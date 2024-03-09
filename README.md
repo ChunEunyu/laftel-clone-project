@@ -83,3 +83,4 @@
 
 
 ## 주요 기술 과제 및 트러블 슈팅
+[요일별 신작 구현 및 트러블 슈팅](https://github.com/ChunEunyu/laftel-clone-project/wiki/%EC%9A%94%EC%9D%BC-%EB%B3%84-%EC%8B%A0%EC%9E%91-%EA%B8%B0%EB%8A%A5-%EA%B5%AC%ED%98%84)
