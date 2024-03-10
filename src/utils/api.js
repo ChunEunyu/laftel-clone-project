@@ -6,7 +6,6 @@ const header = {
   'Content-Type' : 'application/json',
   "Accept": "application/json",
   "Access-Control-Allow-Origin": `https://laftel-clone-project.vercel.app/`,
-  'User-Agent' : 'Chrome/122.0.0.0 Mobile Safari/537.36',
   'laftel' : 'Tejava',
   'Access-Control-Allow-Credentials':"true",
 }
