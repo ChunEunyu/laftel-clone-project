@@ -3,6 +3,7 @@ import { db } from "../firebase";
 import { doc, setDoc, getDocs, collection } from "firebase/firestore";
 
 const api = axios.create({
+  headers: {'laftel' : 'Tejava'},
   baseURL: 'https://laftel.net',
 });
 
