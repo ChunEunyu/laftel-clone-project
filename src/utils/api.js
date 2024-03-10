@@ -2,8 +2,13 @@ import axios from "axios";
 import { db } from "../firebase";
 import { doc, setDoc, getDocs, collection } from "firebase/firestore";
 
+const header = {
+  'Content-Type' : 'application/json',
+  'User-Agent' : 'Chrome/122.0.0.0 Mobile Safari/537.36',
+  'laftel' : 'Tejava'
+}
 const api = axios.create({
-  headers: {'laftel' : 'Tejava'},
+  headers: header,
   baseURL: 'https://laftel.net',
 });
 
