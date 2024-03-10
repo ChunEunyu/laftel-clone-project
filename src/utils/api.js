@@ -4,8 +4,11 @@ import { doc, setDoc, getDocs, collection } from "firebase/firestore";
 
 const header = {
   'Content-Type' : 'application/json',
+  "Accept": "application/json",
+  "Access-Control-Allow-Origin": `http://localhost:3000`,
   'User-Agent' : 'Chrome/122.0.0.0 Mobile Safari/537.36',
-  'laftel' : 'Tejava'
+  'laftel' : 'Tejava',
+  'Access-Control-Allow-Credentials':"true",
 }
 const api = axios.create({
   headers: header,
