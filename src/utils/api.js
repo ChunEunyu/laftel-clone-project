@@ -11,7 +11,6 @@ const header = {
 };
 
 const api = axios.create({
-  headers: header,
   baseURL: 'https://laftel.net',
 });
 
