@@ -5,10 +5,11 @@ import { doc, setDoc, getDocs, collection } from "firebase/firestore";
 const header = {
   'Content-Type' : 'application/json',
   "Accept": "application/json",
-  "Access-Control-Allow-Origin": `https://laftel-clone-project.vercel.app/`,
+  "Access-Control-Allow-Origin": "*",
   'laftel' : 'Tejava',
   'Access-Control-Allow-Credentials':"true",
-}
+};
+
 const api = axios.create({
   headers: header,
   baseURL: 'https://laftel.net',
